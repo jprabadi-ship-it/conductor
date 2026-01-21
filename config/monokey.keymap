@@ -60,7 +60,7 @@
 &kp HOME   &kp LC(LEFT)  &kp UP_ARROW  &kp LC(RIGHT)  &kp END                 &kp LG(T)      &kp LS(LG(NUMBER_4))  &kp ASTERISK   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
 &kp LG(A)  &kp LEFT      &kp DOWN      &kp RIGHT      &kp LC(DOWN)            &kp LG(W)      &mkp MB4              &mkp MB5       &kp LEFT_BRACKET      &kp RIGHT_BRACKET
 &trans     &kp LG(X)     &kp LG(C)     &kp LG(V)      &trans                  &kp LS(LG(T))  &kp LG(Z)             &kp LS(LG(Z))  &trans                &kp LC(LG(Q))
-&trans     &trans        &trans        &trans         &trans        &trans    &kp TAB        &kp LC(UP_ARROW)                     &trans                &trans
+&trans     &trans        &trans        &trans         &none         &trans    &kp TAB        &kp LC(UP_ARROW)                     &trans                &trans
             >;
         };
 
