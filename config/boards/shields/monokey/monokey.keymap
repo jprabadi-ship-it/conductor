@@ -101,12 +101,13 @@
         compatible = "zmk,keymap";
 
         default_layer {
-          bindings = <
-&kp Q      &kp W           &kp E         &kp R             &kp T                                &kp Y          &kp U                &kp I     &kp O     &kp P
-&kp A      &kp S           &kp D         &kp F             &kp G                                &kp H          &kp J                &kp K     &kp L     &kp ENTER
-&kp Z      &kp X           &kp C         &kp V             &kp B                                &kp N          &kp M                &mkp MB1  &mkp MB2  &kp SLASH
-&kp LCTRL  &kp LEFT_SHIFT  &kp LEFT_ALT  &kp LEFT_COMMAND  &lt 1 SPACE  &lt_to_layer_0 2 TAB    &kp BACKSPACE  &lt 3 RIGHT_COMMAND            &kp ESC   &kp ESC
+bindings = <
+&kp Q             &kp W      &kp E         &kp R         &kp T                               &kp Y          &kp U       &kp I      &kp O            &kp BACKSPACE
+&kp A             &kp S      &kp D         &kp F         &kp G                               &kp H          &kp J       &kp K      &kp L            &kp P
+&mt LSHFT Z       &kp X      &kp C         &kp V         &kp B                               &kp N          &kp M       &kp COMMA  &kp PERIOD       &kp MINUS
+&mt LGUI ESC      &kp LCTRL  &kp LALT      &lt 1 TAB     &lt 2 SPACE   &mt LGUI LANG2        &mt LGUI LANG1 &lt 3 ENTER            &mt RSHFT EQUAL  &mt RSHFT SLASH
             >;
+
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
         };
