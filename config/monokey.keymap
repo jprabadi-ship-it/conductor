@@ -18,12 +18,12 @@
     combos {
         compatible = "zmk,combos";
 
-        scroll {
+        scroll {    // スクロールのコンボ
             bindings = <&mo 5>;
             key-positions = <17 18>;
         };
 
-        mb3 {
+        mb3 {    // MB3のコンボ
             bindings = <&mkp MB3>;
             key-positions = <19 18>;
         };
