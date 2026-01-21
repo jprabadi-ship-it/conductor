@@ -6,6 +6,7 @@
 };
 
 &xiao_serial { status = "disabled"; };
+
 &kscan0 {
         col-gpios
             = <&xiao_d 10 GPIO_ACTIVE_HIGH>
@@ -15,8 +16,6 @@
             , <&gpio0 10 GPIO_ACTIVE_HIGH>
             ;
 };
-
-
 
 // 非マウスキーでAML解除
 &zip_temp_layer {
@@ -28,15 +27,19 @@
     // トラボ誤爆防止
 };
 
-
 / {
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
-        input-processors = <&zip_temp_layer 4 100000>; // AML
-
+        
+        // ▼ ここを変更しました ▼
+        // zip_temp_layer（自動マウスレイヤー）の後に、zip_xy_scaler（速度調整）を追加
+        // <&zip_xy_scaler 分子 分母> なので <3 2> は 1.5倍速、<2 1> は 2倍速になります
+        input-processors = <&zip_temp_layer 4 100000>
+                         , <&zip_xy_scaler 3 2>; 
     };
 };
+
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
@@ -63,6 +66,7 @@
     pinctrl-1 = <&spi0_sleep>;
     pinctrl-names = "default", "sleep";
     cs-gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
+
     trackball: trackball@0 {
         status = "okay";
         compatible = "pixart,pmw3610";
@@ -70,6 +74,5 @@
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         scroll-layers = <5>;
-        cpi = <800>;
     };
 };
