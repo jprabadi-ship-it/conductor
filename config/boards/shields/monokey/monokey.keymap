@@ -52,7 +52,7 @@
             #binding-cells = <0>;
 
             bindings = <
-                &macro_repeat_press   // 「押している間繰り返し送信」
+                &macro_repeat_press   // 「押している間繰り返し送信」　
                 &kp BACKSPACE
             >;
         };
