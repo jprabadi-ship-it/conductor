@@ -105,8 +105,8 @@
             bindings = <
 &kp Q         &kp W      &kp E      &kp R      &kp T          &kp Y          &kp U       &kp I        &kp O        &kp BSPC
 &kp A         &kp S      &kp D      &kp F      &kp G          &kp H          &kp J       &kp K        &kp L        &kp P
-&mt LSHFT Z   &kp X      &kp C      &kp V      &kp B          &kp N          &kp M       &kp COMMA    &kp DOT      &kp MINUS
-&mt LGUI ESC  &kp LCTRL  &kp LALT   &lt 1 TAB  &lt 2 SPACE    &mt LGUI LANG2 &mt RGUI LANG1 &lt 3 ENTER  &mt RSHFT EQUAL &mt RSHFT SLASH
+&mt LSHFT Z   &kp X      &kp C      &kp V      &kp B          &kp N          &kp M       &kp COMMA    &kp DOT      &mt RSHIFT MINUS
+&mt LGUI ESC  &kp LCTRL  &kp LALT   &lt 1 TAB  &lt 2 SPACE    &mt LGUI LANG2 &mt RGUI LANG1 &lt 3 ENTER  &kp RSHFT(EQUAL) &kp RSHFT(SLASH)
             >;
         };
 
