@@ -22,8 +22,8 @@
 // 非マウスキーでAML解除
 &zip_temp_layer {
     excluded-positions = <
-        17 // K
-        18 // L
+        16 // K
+        17 // L
     >;
     require-prior-idle-ms = <200>;
     // トラボ誤爆防止
