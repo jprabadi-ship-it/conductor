@@ -39,13 +39,13 @@
 
         scroll {
             bindings = <&mo 5>;
-            key-positions = <6 7>; 
+            key-positions = <6 7>;
             layers = <5>;
         };
 
         mb3 {
             bindings = <&mkp MB3>;
-            key-positions = <7 8>; 
+            key-positions = <7 8>;
         };
     };
 
@@ -106,10 +106,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans            &trans  &mkp LCLK  &mkp RCLK  &trans  &trans
-&trans  &trans  &trans  &trans  &trans            &trans  &trans     &trans     &trans  &trans
-&trans  &trans  &trans  &trans  &trans            &trans  &trans     &trans     &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                &trans  &trans
+&trans  &trans  &trans  &trans  &trans            &trans  &mkp MB1  &mkp MB2  &trans  &trans
+&trans  &trans  &trans  &trans  &trans            &trans  &trans    &trans    &trans  &trans
+&trans  &trans  &trans  &trans  &trans            &trans  &trans    &trans    &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans              &trans  &trans
             >;
         };
 
