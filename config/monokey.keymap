@@ -8,6 +8,7 @@
 #define NUM 6
 
 /* マウス移動とスクロールの加速設定 */
+
 &mmv {
     time-to-max-speed-ms = <500>;
     acceleration-exponent = <1>;
@@ -23,9 +24,7 @@
     quick-tap-ms = <200>;
 };
 
-&lt {
-    quick-tap-ms = <200>;
-};
+&lt { quick-tap-ms = <200>; };
 
 &mt {
     flavor = "balanced";
@@ -40,12 +39,13 @@
 
         scroll {
             bindings = <&mo 5>;
-            key-positions = <16 17>; /* J + K */
+            key-positions = <7 6>; /* J + K */
+            layers = <5>;
         };
 
         mb3 {
             bindings = <&mkp MB3>;
-            key-positions = <17 18>; /* K + L */
+            key-positions = <7 8>; /* K + L */
         };
     };
 
@@ -106,10 +106,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans            &trans  &trans    &trans    &trans  &trans
-&trans  &trans  &trans  &trans  &trans            &trans  &mkp MB1  &mkp MB2  &trans  &trans
-&trans  &trans  &trans  &trans  &trans            &trans  &trans    &trans    &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans              &trans  &trans
+&trans  &trans  &trans  &trans  &trans            &trans  &mkp LCLK  &mkp RCLK  &trans  &trans
+&trans  &trans  &trans  &trans  &trans            &trans  &trans     &trans     &trans  &trans
+&trans  &trans  &trans  &trans  &trans            &trans  &trans     &trans     &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                &trans  &trans
             >;
         };
 
