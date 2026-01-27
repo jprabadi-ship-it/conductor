@@ -37,15 +37,72 @@
     combos {
         compatible = "zmk,combos";
 
+        tab {
+            bindings = <&kp TAB>;
+            key-positions = <11 12>;
+        };
+
+        shift_tab {
+            bindings = <&kp LS(TAB)>;
+            key-positions = <12 13>;
+        };
+
+        muhennkann {
+            bindings = <&to_layer_0 INT_MUHENKAN>;
+            key-positions = <11 10>;
+        };
+
+        double_quotation {
+            bindings = <&kp DOUBLE_QUOTES>;
+            key-positions = <20 21>;
+        };
+
         scroll {
             bindings = <&mo 5>;
-            key-positions = <7 6>;
+            key-positions = <6 7>;
             layers = <5>;
         };
 
         mb3 {
             bindings = <&mkp MB3>;
             key-positions = <7 8>;
+        };
+    };
+
+    macros {
+        to_layer_0: to_layer_0 {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+            label = "TO_LAYER_0";
+        };
+
+         macro_repeated_backspace: macro_repeated_backspace {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO_REPEATED_BACKSPACE";
+            #binding-cells = <0>;
+
+            bindings = <
+                &macro_repeat_press   // 「押している間繰り返し送信」
+                &kp BACKSPACE
+            >;
+        };
+    };
+
+    tap_dance {
+        compatible = "zmk,tap-dance";
+
+        td_backspace {
+            label = "TD_BACKSPACE";
+            // 1回タップ、2回タップを定義
+            taps = <1>, <2>;
+
+            // 1回タップ => &kp BACKSPACE
+            // 2回タップ => マクロを呼び出し連打
+            bindings = <
+                &kp BACKSPACE
+                &macro_repeated_backspace
+            >;
         };
     };
 
@@ -59,6 +116,18 @@
 
             bindings = <&mkp MB2>;
         };
+
+        backspace_hold_layer: backspace_hold_layer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "BACKSPACE_HOLD_LAYER";
+
+            // [タップ動作]       [ホールド動作]
+            bindings = < &tap_dance_td_backspace >, < &mo 3 >;
+
+            // ホールド判定の時間（例：200ms）
+            tapping-term-ms = <200>;
+        };
+
     };
 
     keymap {
