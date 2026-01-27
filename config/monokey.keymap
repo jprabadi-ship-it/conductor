@@ -8,12 +8,10 @@
 #define NUM 6
 
 /* マウス移動とスクロールの加速設定 */
-
 &mmv {
     time-to-max-speed-ms = <500>;
     acceleration-exponent = <1>;
 };
-
 &msc {
     time-to-max-speed-ms = <500>;
     acceleration-exponent = <0>;
@@ -23,15 +21,7 @@
     flavor = "balanced";
     quick-tap-ms = <200>;
 };
-
 &lt { quick-tap-ms = <200>; };
-
-&mt {
-    flavor = "balanced";
-    quick-tap-ms = <300>;
-};
-
-&lt { quick-tap-ms = <300>; };
 
 / {
     combos {
