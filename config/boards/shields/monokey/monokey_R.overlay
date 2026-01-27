@@ -24,6 +24,7 @@
     excluded-positions = <
         17 // K
         18 // L
+        26 // M
     >;
     require-prior-idle-ms = <200>;
     // トラボ誤爆防止
@@ -75,4 +76,3 @@
         scroll-layers = <5>;
     };
 };
-
