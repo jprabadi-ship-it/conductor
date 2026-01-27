@@ -31,12 +31,11 @@
         scroll {
             bindings = <&mo 5>;
             key-positions = <16 17>;
-            layers = <5>;
         };
 
         mb3 {
             bindings = <&mkp MB3>;
-            key-positions = <17 18>;
+            key-positions = <19 18>;
         };
     };
     behaviors {
@@ -97,7 +96,7 @@
         MOUSE {
             bindings = <
 &trans  &trans  &trans  &trans  &trans            &trans  &trans    &trans    &trans  &trans
-&trans  &trans  &trans  &trans  &trans            &trans  &mkp MB1  &mkp MB3  &mkp MB2 &trans
+&trans  &trans  &trans  &trans  &trans            &trans  &mkp MB1  &mkp MB2  &trans &trans
 &trans  &trans  &trans  &trans  &trans            &trans  &trans    &trans    &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans              &trans  &trans
             >;
