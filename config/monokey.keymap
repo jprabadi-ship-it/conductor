@@ -92,8 +92,8 @@ behaviors {
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             flavor = "balanced";
-            // ホールド: レイヤー3, タップ: td_backspace
-            bindings = <&mo 3>, <&td_backspace>;
+            // 修正箇所
+            bindings = <&mo 3 &td_backspace>;
         };
     };
 
