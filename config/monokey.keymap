@@ -8,10 +8,12 @@
 #define NUM 6
 
 /* マウス移動とスクロールの加速設定 */
+
 &mmv {
     time-to-max-speed-ms = <500>;
     acceleration-exponent = <1>;
 };
+
 &msc {
     time-to-max-speed-ms = <500>;
     acceleration-exponent = <0>;
@@ -21,8 +23,8 @@
     flavor = "balanced";
     quick-tap-ms = <200>;
 };
-&lt { quick-tap-ms = <200>; };
 
+&lt { quick-tap-ms = <200>; };
 
 / {
     combos {
@@ -38,6 +40,7 @@
             key-positions = <19 18>;
         };
     };
+
     behaviors {
         right_click: right_click_behavior {
             compatible = "zmk,behavior-mouse-key";
@@ -95,10 +98,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans            &trans  &trans    &trans    &trans  &trans
-&trans  &trans  &trans  &trans  &trans            &trans  &mkp MB1  &mkp MB2  &trans &trans
-&trans  &trans  &trans  &trans  &trans            &trans  &trans    &trans    &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans              &trans  &trans
+&trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans            &trans  &trans  &mkp MB1  &mkp MB2  &trans
+&trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans            &trans    &trans
             >;
         };
 
