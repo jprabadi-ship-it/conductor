@@ -32,7 +32,7 @@
 
         scroll {
             bindings = <&mo 5>;
-            key-positions = <16 17>;
+            key-positions = <17 18>;
         };
 
         mb3 {
