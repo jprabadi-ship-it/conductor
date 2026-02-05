@@ -20,7 +20,7 @@
 // 非マウスキーでAML解除
 &zip_temp_layer {
     excluded-positions = <
-        16 // J
+        18 // L
         17 // K
     >;
     require-prior-idle-ms = <200>;
