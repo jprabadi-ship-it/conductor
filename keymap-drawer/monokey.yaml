@@ -30,7 +30,7 @@ layers:
   - M
   - ','
   - .
-  - '-'
+  - {t: /, h: Sft+-}
   - {t: ESC, h: LGUI}
   - LCTRL
   - LALT
@@ -40,7 +40,7 @@ layers:
   - {t: LANG1, h: LGUI}
   - {t: ENTER, h: ARROW}
   - {t: '=', h: RSHFT}
-  - {t: /, h: RSHFT}
+  - '-'
   FUNCTION:
   - '!'
   - '@'
