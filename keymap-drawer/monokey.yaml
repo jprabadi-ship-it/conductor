@@ -18,7 +18,7 @@ layers:
   - G
   - H
   - J
-  - {t: K, h: '5'}
+  - {t: K, h: SCROLL}
   - L
   - P
   - {t: Z, h: LSHFT}
@@ -34,14 +34,14 @@ layers:
   - {t: ESC, h: LGUI}
   - LCTRL
   - LALT
-  - {t: TAB, h: '1'}
-  - {t: SPACE, h: '2'}
+  - {t: TAB, h: FUNCTION}
+  - {t: SPACE, h: NUMERIC}
   - {t: LANG2, h: LGUI}
   - {t: LANG1, h: LGUI}
-  - {t: ENTER, h: '3'}
+  - {t: ENTER, h: ARROW}
   - {t: Sft+=, h: RSHFT}
   - '-'
-  '1':
+  FUNCTION:
   - '!'
   - '@'
   - '#'
@@ -76,13 +76,13 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {type: held}
-  - '6'
+  - Bluetooth
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - VOL DN
   - VOL UP
-  '2':
+  NUMERIC:
   - F1
   - F2
   - F3
@@ -123,7 +123,7 @@ layers:
   - KP 0
   - BRI DN
   - BRI UP
-  '3':
+  ARROW:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - Sft+Ctl+1
@@ -164,7 +164,7 @@ layers:
   - {type: held}
   - BRI DEC
   - BRI INC
-  '4':
+  MOUSE:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -205,7 +205,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  '5':
+  SCROLL:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -246,7 +246,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  '6':
+  Bluetooth:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -494,6 +494,6 @@ layers:
   - {t: ▽, type: trans}
 combos:
 - p: [17, 18]
-  k: '5'
+  k: SCROLL
 - p: [19, 18]
   k: '&mkp MB3'
