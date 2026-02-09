@@ -34,14 +34,14 @@ layers:
   - {t: ESC, h: LGUI}
   - LCTRL
   - LALT
-  - {t: TAB, h: FUNCTION}
-  - {t: SPACE, h: '6'}
+  - {t: TAB, h: '1'}
+  - {t: SPACE, h: '2'}
   - {t: LANG2, h: LGUI}
   - {t: LANG1, h: LGUI}
-  - {t: ENTER, h: ARROW}
+  - {t: ENTER, h: '3'}
   - {t: Sft+=, h: RSHFT}
   - '-'
-  FUNCTION:
+  '1':
   - '!'
   - '@'
   - '#'
@@ -76,13 +76,13 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {type: held}
-  - Bluetooth
+  - '6'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - VOL DN
   - VOL UP
-  '6':
+  '2':
   - F1
   - F2
   - F3
@@ -123,7 +123,7 @@ layers:
   - KP 0
   - BRI DN
   - BRI UP
-  ARROW:
+  '3':
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - Sft+Ctl+1
@@ -246,7 +246,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  Bluetooth:
+  '6':
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
