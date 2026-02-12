@@ -282,7 +282,7 @@ layers:
   - {t: ▽, type: trans}
   - {type: held}
   - {type: held}
-  - {t: ▽, type: trans}
+  - F19
   - {t: ▽, type: trans}
   - '&bootloader'
   - BT CLR
