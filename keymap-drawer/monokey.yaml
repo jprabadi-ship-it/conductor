@@ -62,7 +62,7 @@ layers:
   - '['
   - ']'
   - \
-  - Alt+LSHIFT
+  - LEFT SHIFT
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
