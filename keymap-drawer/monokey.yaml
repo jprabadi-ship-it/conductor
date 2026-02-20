@@ -40,7 +40,7 @@ layers:
   - {t: LANG1, h: LGUI}
   - {t: ENTER, h: ARROW}
   - {t: Sft+=, h: RSHFT}
-  - KP SLASH
+  - /
   FUNCTION:
   - '!'
   - '@'
