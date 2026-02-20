@@ -10,7 +10,7 @@ layers:
   - U
   - I
   - O
-  - BACKSPACE
+  - P
   - A
   - S
   - D
@@ -20,7 +20,7 @@ layers:
   - J
   - {t: K, h: SCROLL}
   - L
-  - P
+  - '-'
   - {t: Z, h: LSHFT}
   - X
   - C
@@ -30,7 +30,7 @@ layers:
   - M
   - ','
   - .
-  - /
+  - BACKSPACE
   - {t: ESC, h: LGUI}
   - LCTRL
   - LALT
@@ -40,7 +40,7 @@ layers:
   - {t: LANG1, h: LGUI}
   - {t: ENTER, h: ARROW}
   - {t: Sft+=, h: RSHFT}
-  - '-'
+  - KP SLASH
   FUNCTION:
   - '!'
   - '@'
