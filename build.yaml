@@ -19,10 +19,10 @@
 ---
 include:
   - board: seeeduino_xiao_ble
-    shield: monokey_R
+    shield: monokey_R rgbled_adapter
     snippet: studio-rpc-usb-uart
   - board: seeeduino_xiao_ble
-    shield: monokey_L
+    shield: monokey_L rgbled_adapter
   - board: seeeduino_xiao_ble
     shield: settings_reset
   
