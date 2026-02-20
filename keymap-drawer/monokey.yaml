@@ -20,7 +20,7 @@ layers:
   - J
   - {t: K, h: SCROLL}
   - L
-  - '-'
+  - {t: '-', h: SCROLL}
   - {t: Z, h: LSHFT}
   - X
   - C
