@@ -10,7 +10,7 @@ layers:
   - U
   - I
   - O
-  - P
+  - BACKSPACE
   - A
   - S
   - D
@@ -20,7 +20,7 @@ layers:
   - J
   - {t: K, h: SCROLL}
   - L
-  - {t: '-', h: SCROLL}
+  - {t: P, h: SCROLL}
   - {t: Z, h: LSHFT}
   - X
   - C
@@ -30,7 +30,7 @@ layers:
   - M
   - ','
   - .
-  - BACKSPACE
+  - '-'
   - {t: ESC, h: LGUI}
   - LCTRL
   - LALT
