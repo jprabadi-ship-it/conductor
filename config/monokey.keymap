@@ -23,8 +23,6 @@
 &lt { quick-tap-ms = <200>; };
 
 / {
-
-/ {
     // ▼▼ ここから追加 ▼▼
     macros {
         bt2_layer7: bt2_layer7 {
