@@ -23,6 +23,23 @@
 &lt { quick-tap-ms = <200>; };
 
 / {
+
+/ {
+    // ▼▼ ここから追加 ▼▼
+    macros {
+        bt2_layer7: bt2_layer7 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <200>;   // 次の動作まで200ms待機する
+            tap-ms = <30>;     // キーを押している時間
+            bindings
+                = <&bt BT_SEL 1>  // Bluetoothプロファイル2（※0始まりなので1）を選択
+                , <&to 7>         // レイヤー7に移動（ロック）する
+                ;
+        };
+    };
+    // ▲▲ ここまで追加 ▲▲
+
     combos {
         compatible = "zmk,combos";
 
@@ -112,7 +129,7 @@
 
         Bluetooth {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &trans
+&trans  &trans  &trans  &trans  &trans                   &bt BT_SEL 0   &bt BT_SEL 1   &bt2_Layer7    &bt BT_SEL 3   &trans
 &trans  &trans  &trans  &trans  &trans                   &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &trans
 &trans  &trans  &trans  &trans  &trans                   &trans         &trans         &trans         &trans         &trans
 &trans  &trans  &trans  &trans  &trans  &kp F19  &trans  &bootloader                                  &bt BT_CLR     &bt BT_CLR_ALL
