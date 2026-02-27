@@ -254,7 +254,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: BT, h: '0'}
   - {t: BT, h: '1'}
-  - '&bt2_Layer7'
+  - '&bt2_layer7'
   - {t: BT, h: '3'}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
