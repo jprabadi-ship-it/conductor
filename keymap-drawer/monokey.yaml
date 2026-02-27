@@ -325,7 +325,7 @@ layers:
   - {t: SPACE, h: NUMERIC}
   - {t: LANG2, h: LGUI}
   - {t: LANG1, h: LGUI}
-  - {t: ENTER, h: ARROW}
+  - {t: ENTER, h: '8'}
   - {t: Sft+=, h: RSHFT}
   - /
   '8':
@@ -366,7 +366,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {type: held}
   - BRI DEC
   - BRI INC
 combos:
