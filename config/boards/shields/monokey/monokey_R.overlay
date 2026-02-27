@@ -32,11 +32,28 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
         
-        // ▼ ここを変更しました ▼
-        // zip_temp_layer（自動マウスレイヤー）の後に、zip_xy_scaler（速度調整）を追加
-        // <&zip_xy_scaler 分子 分母> なので <3 2> は 1.5倍速、<2 1> は 2倍速になります
+        // 【標準の動作】普段は今まで通り 1.5倍速
         input-processors = <&zip_temp_layer 4 100000>
-                         , <&zip_xy_scaler 3 2>; 
+                         , <&zip_xy_scaler 3 2>;
+
+        // ▼▼ ここから追加（レイヤーごとの上書き設定） ▼▼
+
+        // 【例1：スナイパーモード】レイヤー5（SCROLL）の時は、感度を「1/2倍」に落とす
+        layer_scroll_slow {
+            layers = <7>;
+            // ※注意: 上書き設定の中にも必ず zip_temp_layer（自動マウス）を残す必要があります
+            input-processors = <&zip_temp_layer 4 100000>
+                             , <&zip_xy_scaler 1 2>;
+        };
+
+        // 【例2：爆速モード】レイヤー1（FUNCTION）の時は、感度を「3倍」にする
+        layer_func_fast {
+            layers = <8>;
+            input-processors = <&zip_temp_layer 4 100000>
+                             , <&zip_xy_scaler 3 1>;
+        };
+        
+        // ▲▲ ここまで追加 ▲▲
     };
 };
 
