@@ -32,9 +32,9 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
         
-        // 【標準の動作】普段は今まで通り 1.5倍速
+        // 【標準の動作】
         input-processors = <&zip_temp_layer 4 100000>
-                         , <&zip_xy_scaler 1 1>;
+                         , <&zip_xy_scaler 1 2>;
     };
 };
 
