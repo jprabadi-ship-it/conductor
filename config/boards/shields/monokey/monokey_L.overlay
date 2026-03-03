@@ -11,3 +11,12 @@
             ;
 };
 
+/ {
+    chg_stat: chg_stat {
+        compatible = "custom,chg-stat";
+        /* Xiao BLE の充電検知ピン P0.17 (Low = 充電中, High = 完了/未接続) */
+        gpios = <&gpio0 17 GPIO_ACTIVE_LOW>;
+        status = "okay";
+    };
+};
+
