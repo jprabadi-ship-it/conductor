@@ -17,11 +17,11 @@
 #     artifact-name: corne_left_with_logging
 #
 ---
- include:
-  - board: xiao_ble//zmk
+include:
+  - board: xiao_ble
     shield: monokey_R rgbled_adapter
     snippet: studio-rpc-usb-uart
-  - board: xiao_ble//zmk
+  - board: xiao_ble
     shield: monokey_L rgbled_adapter
-  - board: xiao_ble//zmk
-    shield: settings_reset 
+  - board: xiao_ble
+    shield: settings_reset
