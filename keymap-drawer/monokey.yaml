@@ -52,8 +52,8 @@ layers:
   - '*'
   - (
   - )
-  - Sft+Gui+Alt+3
   - Sft+Gui+4
+  - Sft+Gui+Ctl+4
   - Sft+Gui+5
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
