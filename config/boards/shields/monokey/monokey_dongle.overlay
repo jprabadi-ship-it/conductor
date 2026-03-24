@@ -1,11 +1,21 @@
 #include "monokey.dtsi"
 
-/* 親機にはキースイッチの配線がないため、kscan（キーマトリクス）の指定自体を取り消す */
+/* 既存のキーマトリクスを削除 */
+/delete-node/ &kscan0;
+
 / {
     chosen {
-        /delete-property/ zmk,kscan;
+        zmk,kscan = &kscan_dummy;
+    };
+
+    /* * 【ゼロ割り回避 ＆ 参照エラー回避の無敵ダミー】
+     * 1. columns と rows を 1 にして起動時のパニック（即死）を防ぐ
+     * 2. kscan と kscan0 の両方の名前を名乗ることで、dtsiからのエラーを全て吸収する
+     */
+    kscan: kscan0: kscan_dummy {
+        compatible = "zmk,kscan-mock";
+        columns = <1>;
+        rows = <1>;
+        events = <0>;
     };
 };
-
-/* 本体側の配線定義も不要なので削除する */
-/delete-node/ &kscan0;
