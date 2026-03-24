@@ -1,9 +1,18 @@
 #include "monokey.dtsi"
 
-/* * 【自爆回避のための完全ミラーストラテジー】
- * ダミーマトリクスを使うのをやめ、設計図をそのまま読み込みます。
- * 物理スイッチが繋がっていなくても、OSは「キーが押されていないだけ」と判断するため
- * 起動時のパニックを完全に防ぐことができます。
- */
-
+/* シリアル通信の無効化（Xiao BLEの必須設定） */
 &xiao_serial { status = "disabled"; };
+
+/* * 【パニック回避のための完全ミラーストラテジー】
+ * 右手と全く同じピン配置をドングルにも定義します。
+ * スイッチは繋がっていませんが、OSのチェックを完璧に通過させるための安全策です。
+ */
+&kscan0 {
+    col-gpios
+        = <&xiao_d 10 GPIO_ACTIVE_HIGH>
+        , <&xiao_d 9 GPIO_ACTIVE_HIGH> 
+        , <&xiao_d 8 GPIO_ACTIVE_HIGH> 
+        , <&xiao_d 7 GPIO_ACTIVE_HIGH> 
+        , <&gpio0 10 GPIO_ACTIVE_HIGH>
+        ;
+};
