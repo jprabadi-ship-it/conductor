@@ -1,13 +1,17 @@
-#include "monokey.dtsi"
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
 
-&xiao_serial { status = "disabled"; };
-
-&kscan0 {
-    col-gpios
-        = <&xiao_d 10 GPIO_ACTIVE_HIGH>
-        , <&xiao_d 9 GPIO_ACTIVE_HIGH> 
-        , <&xiao_d 8 GPIO_ACTIVE_HIGH> 
-        , <&xiao_d 7 GPIO_ACTIVE_HIGH> 
-        , <&gpio0 10 GPIO_ACTIVE_HIGH>
-        ;
+    /* ダミーのマトリックス（何も繋がっていない状態を明示） */
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        wakeup-source;
+        row-gpios = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+        col-gpios = <&xiao_d 1 GPIO_ACTIVE_HIGH>;
+    };
 };
+
+/* 0.6.1でハングしがちなUARTとシリアルを徹底的に無効化 */
+&xiao_serial { status = "disabled"; };
+&uart0 { status = "disabled"; };
