@@ -1,21 +1,9 @@
 #include "monokey.dtsi"
 
-/* 既存のキーマトリクスを削除 */
-/delete-node/ &kscan0;
+/* * 【自爆回避のための完全ミラーストラテジー】
+ * ダミーマトリクスを使うのをやめ、設計図をそのまま読み込みます。
+ * 物理スイッチが繋がっていなくても、OSは「キーが押されていないだけ」と判断するため
+ * 起動時のパニックを完全に防ぐことができます。
+ */
 
-/ {
-    chosen {
-        zmk,kscan = &kscan0;
-    };
-
-    /* * 【はみ出しパニック回避の広大なダミー】
-     * 1x1だと座標エラーで自爆するため、
-     * どんなキーボードでも収まる 16x16 の十分な枠を用意します。
-     */
-    kscan: kscan0: kscan_mock_node {
-        compatible = "zmk,kscan-mock";
-        columns = <16>;
-        rows = <16>;
-        events = <0>;
-    };
-};
+&xiao_serial { status = "disabled"; };
