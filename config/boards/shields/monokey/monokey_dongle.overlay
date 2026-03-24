@@ -1,10 +1,7 @@
-/ {
-    /* キーボードとしての機能をすべて無効化し、LEDだけを定義する */
-    chosen {
-        /delete-property/ zmk,kscan;
-        /delete-property/ zmk,matrix_transform;
-    };
+#include "monokey.dtsi"
 
+/ {
+    /* 基板上の青色LEDを制御できるように定義 */
     leds {
         compatible = "gpio-leds";
         blue_led: led_0 {
@@ -12,4 +9,15 @@
             label = "Blue LED";
         };
     };
+};
+
+/* コンパイルを通すために、右手と同じ配線情報を最低限持たせる */
+&kscan0 {
+    col-gpios
+        = <&xiao_d 10 GPIO_ACTIVE_HIGH>
+        , <&xiao_d 9 GPIO_ACTIVE_HIGH> 
+        , <&xiao_d 8 GPIO_ACTIVE_HIGH> 
+        , <&xiao_d 7 GPIO_ACTIVE_HIGH> 
+        , <&gpio0 10 GPIO_ACTIVE_HIGH>
+        ;
 };
