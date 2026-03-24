@@ -5,14 +5,14 @@
 
 / {
     chosen {
-        zmk,kscan = &kscan_dummy;
+        zmk,kscan = &kscan0;
     };
 
     /* * 【ゼロ割り回避 ＆ 参照エラー回避の無敵ダミー】
-     * 1. columns と rows を 1 にして起動時のパニック（即死）を防ぐ
-     * 2. kscan と kscan0 の両方の名前を名乗ることで、dtsiからのエラーを全て吸収する
+     * kscan と kscan0 という2つの「ラベル」を持たせつつ、
+     * ノード名を kscan_mock_node として定義します。
      */
-    kscan: kscan0: kscan_dummy {
+    kscan: kscan0: kscan_mock_node {
         compatible = "zmk,kscan-mock";
         columns = <1>;
         rows = <1>;
