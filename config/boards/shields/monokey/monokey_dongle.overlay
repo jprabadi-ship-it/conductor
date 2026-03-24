@@ -1,9 +1,13 @@
+#include "monokey.dtsi"
+
 / {
     chosen {
+        /* 本物のマトリクスの代わりに、ダミーを割り当てる */
         zmk,kscan = &mock_kscan;
     };
 
-    mock_kscan: kscan {
+    /* 以前のエラー（diode-direction）を避けるため、ノード名を kscan_dummy に変更 */
+    mock_kscan: kscan_dummy {
         compatible = "zmk,kscan-mock";
         columns = <0>;
         rows = <0>;
