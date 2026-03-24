@@ -1,4 +1,4 @@
-#include "monokey.dtsi" // 既存の共通設定を読み込み
+#include "monokey.dtsi"
 
 / {
     chosen {
