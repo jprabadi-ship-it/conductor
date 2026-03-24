@@ -1,12 +1,7 @@
 #include "monokey.dtsi"
 
-/* シリアル通信の無効化（Xiao BLEの必須設定） */
 &xiao_serial { status = "disabled"; };
 
-/* * 【パニック回避のための完全ミラーストラテジー】
- * 右手と全く同じピン配置をドングルにも定義します。
- * スイッチは繋がっていませんが、OSのチェックを完璧に通過させるための安全策です。
- */
 &kscan0 {
     col-gpios
         = <&xiao_d 10 GPIO_ACTIVE_HIGH>
