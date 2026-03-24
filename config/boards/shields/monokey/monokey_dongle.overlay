@@ -14,3 +14,5 @@
         events = <0>;
     };
 };
+
+/delete-node/ &kscan;
