@@ -8,14 +8,14 @@
         zmk,kscan = &kscan0;
     };
 
-    /* * 【ゼロ割り回避 ＆ 参照エラー回避の無敵ダミー】
-     * kscan と kscan0 という2つの「ラベル」を持たせつつ、
-     * ノード名を kscan_mock_node として定義します。
+    /* * 【はみ出しパニック回避の広大なダミー】
+     * 1x1だと座標エラーで自爆するため、
+     * どんなキーボードでも収まる 16x16 の十分な枠を用意します。
      */
     kscan: kscan0: kscan_mock_node {
         compatible = "zmk,kscan-mock";
-        columns = <1>;
-        rows = <1>;
+        columns = <16>;
+        rows = <16>;
         events = <0>;
     };
 };
