@@ -1,5 +1,3 @@
-#include "monokey.dtsi"
-
 / {
     chosen {
         zmk,kscan = &mock_kscan;
