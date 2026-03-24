@@ -1,18 +1,18 @@
 #include "monokey.dtsi"
 
+/* 一旦本物の kscan0 を消去する */
+/delete-node/ &kscan0;
+
 / {
     chosen {
-        /* 本物のマトリクスの代わりに、ダミーを割り当てる */
-        zmk,kscan = &mock_kscan;
+        zmk,kscan = &kscan0;
     };
 
-    /* 以前のエラー（diode-direction）を避けるため、ノード名を kscan_dummy に変更 */
-    mock_kscan: kscan_dummy {
+    /* ZMK Studioが探せるように、同じ kscan0 という名前でダミーを再定義する */
+    kscan0: kscan_dummy {
         compatible = "zmk,kscan-mock";
         columns = <0>;
         rows = <0>;
         events = <0>;
     };
 };
-
-/delete-node/ &kscan0;
