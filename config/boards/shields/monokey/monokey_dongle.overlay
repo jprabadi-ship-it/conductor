@@ -1,17 +1,7 @@
 #include "monokey.dtsi"
 
-/ {
-    /* 基板上の青色LEDを制御できるように定義 */
-    leds {
-        compatible = "gpio-leds";
-        blue_led: led_0 {
-            gpios = <&gpio0 26 GPIO_ACTIVE_LOW>;
-            label = "Blue LED";
-        };
-    };
-};
+&xiao_serial { status = "disabled"; };
 
-/* コンパイルを通すために、右手と同じ配線情報を最低限持たせる */
 &kscan0 {
     col-gpios
         = <&xiao_d 10 GPIO_ACTIVE_HIGH>
