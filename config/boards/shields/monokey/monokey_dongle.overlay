@@ -19,6 +19,25 @@
         };
     };
 
+    /* LEDを強制的に点灯させる設定 */
+    leds {
+        compatible = "gpio-leds";
+        status = "okay";
+
+        /* 赤色LEDを点灯 */
+        led_red: led_0 {
+            gpios = <&gpio0 26 GPIO_ACTIVE_LOW>;
+            label = "Red LED";
+        };
+
+        /* 緑色LEDを点灯（赤＋緑でオレンジ〜黄色になります） */
+        led_green: led_1 {
+            gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;
+            label = "Green LED";
+        };
+    };
+
+
     /* 受信した信号をPCのマウス操作に変換するだけのシンプルな設定 */
     trackball_peripheral_listener {
         compatible = "zmk,input-listener";
