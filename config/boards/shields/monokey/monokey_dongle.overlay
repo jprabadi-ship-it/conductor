@@ -8,17 +8,22 @@
 &xiao_serial { status = "disabled"; };
 
 / {
-    /* オートマウスの挙動をここで定義 */
+    /* ⚠️ ここにスケーラーの定義を追加します */
+    zip_xy_scaler: zip_xy_scaler {
+        compatible = "zmk,input-processor-scaler";
+        #input-processor-cells = <2>;
+        type = <INPUT_EV_REL>;
+        codes = <INPUT_REL_X>, <INPUT_REL_Y>;
+    };
+
     zip_temp_layer: zip_temp_layer {
         compatible = "zmk,input-processor-temp-layer";
         #input-processor-cells = <2>;
     };
 
-    /* 重要：deviceを指定しない「グローバル・リスナー」にします。
-       これにより、右手（Peripheral）から無線で届いたマウス信号をドングルが直接キャッチできます。
-    */
     trackball_peripheral_listener {
         compatible = "zmk,input-listener";
+        /* スケーラーとレイヤー切り替えを順番に適用します */
         input-processors = <&zip_xy_scaler 1 2>, <&zip_temp_layer 4 1000>;
     };
 };
