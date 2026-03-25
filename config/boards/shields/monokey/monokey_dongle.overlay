@@ -1,14 +1,16 @@
 #include "monokey.dtsi"
 
+/* 1. 基本設定：使用しないシリアルを無効化 */
+&xiao_serial { status = "disabled"; };
+
+/* 2. キーマトリックス：ドングル自体のボタン用（もしあれば） */
 &kscan0 {
     row-gpios = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
     col-gpios = <&xiao_d 1 GPIO_ACTIVE_HIGH>;
 };
 
-&xiao_serial { status = "disabled"; };
-
 / {
-    /* 右手から送られてきたトラックボールの無線信号を受信するための設定 */
+    /* 3. 無線信号の受信設定 */
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
@@ -19,51 +21,32 @@
         };
     };
 
-    /* LEDを強制的に点灯させる設定 */
+    /* 4. 🌟 LEDの物理定義（ここを1つに集約しました） */
     leds {
         compatible = "gpio-leds";
         status = "okay";
 
-        /* 赤色LEDを点灯 */
-        led_red: led_0 {
+        /* 赤色LEDを強制点灯 */
+        dongle_red: led_0 {
             gpios = <&gpio0 26 GPIO_ACTIVE_LOW>;
-            label = "Red LED";
+            label = "Dongle Red LED";
         };
 
-        /* 緑色LEDを点灯（赤＋緑でオレンジ〜黄色になります） */
-        led_green: led_1 {
+        /* 緑色LEDを強制点灯（赤＋緑＝オレンジ） */
+        dongle_green: led_1 {
             gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;
-            label = "Green LED";
+            label = "Dongle Green LED";
         };
     };
 
-    /* 🌟 システムに「この led_strip を使って光れ」と教える */
+    /* 5. 🌟 ZMKのシステムにこのLEDを紐付け（将来用） */
     chosen {
-        zmk,underglow = &led_strip;
+        zmk,underglow = &leds;
     };
 
-    /* 物理的なLEDの定義 */
-    led_strip: leds {
-        compatible = "gpio-leds";
-        status = "okay";
-
-        /* 赤色LED（常時点灯） */
-        led_red: led_0 {
-            gpios = <&gpio0 26 GPIO_ACTIVE_LOW>;
-            label = "Red LED";
-        };
-
-        /* 緑色LED（常時点灯：赤と混ざってオレンジになります） */
-        led_green: led_1 {
-            gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;
-            label = "Green LED";
-        };
-    };
-
-    /* 受信した信号をPCのマウス操作に変換するだけのシンプルな設定 */
+    /* 6. マウス操作のリスナー設定（AML実装の土台） */
     trackball_peripheral_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
-        /* 🌟 エラーの原因となる自動レイヤー切り替えを一旦削除しました */
     };
 };
