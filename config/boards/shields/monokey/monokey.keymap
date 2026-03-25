@@ -58,12 +58,12 @@
         };
     };
 
-/* monokey.keymap の 65行目〜71行目付近を以下で完全に上書き */
+/* monokey.keymap の trackball_peripheral_listener 部分 */
     trackball_peripheral_listener {
         compatible = "zmk,input-listener";
         device = <&vtrackball>;
-        /* zip_temp_layer を使わず、直接レイヤー4を指定する標準的な書き方にします */
-        input-processors = <&zip_xy_scaler 1 2>;
+        /* 親機（ドングル）側でレイヤー4を起動させます */
+        input-processors = <&zip_temp_layer 4 1000>; 
     };
 
     tap_dance {
