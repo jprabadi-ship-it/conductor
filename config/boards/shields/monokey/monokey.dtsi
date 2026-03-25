@@ -15,6 +15,12 @@
         chg-stat = &chg_stat;
     };
 
+    chg_stat: chg_stat {
+        compatible = "custom,chg-stat";
+        gpios = <&gpio0 17 GPIO_ACTIVE_LOW>;
+        status = "okay";
+    };
+
     chosen {
         zmk,physical-layout = &monokey_physical_layout;
     };
