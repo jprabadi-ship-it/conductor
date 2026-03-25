@@ -7,5 +7,21 @@
 
 &xiao_serial { status = "disabled"; };
 
-/* ⚠️ エラーの原因となっていた trackball_peripheral_listener などの
-   オートマウス関連の記述を、一旦すべて削除しました */
+/ {
+    /* 右手から送られてきたトラックボールの無線信号を受信するための設定 */
+    split_inputs {
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        trackball_split: trackball@0 {
+            compatible = "zmk,input-split";
+            reg = <0>;
+        };
+    };
+
+    /* 受信した信号をPCのマウス操作に変換するリスナー */
+    trackball_peripheral_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball_split>; /* ここで実在する受信デバイスを指定！ */
+    };
+};
