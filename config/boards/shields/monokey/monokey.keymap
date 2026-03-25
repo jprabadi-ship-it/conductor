@@ -58,15 +58,6 @@
         };
     };
 
-/* monokey.keymap のリスナー部分を以下に差し替え */
-    / {
-        trackball_peripheral_listener {
-            compatible = "zmk,input-listener";
-            /* device を指定せず、すべての入力（peripheralからの信号）を対象にします */
-            input-processors = <&zip_xy_scaler 1 2>, <&zip_temp_layer 4 1000>;
-        };
-    };
-
     tap_dance {
         compatible = "zmk,tap-dance";
 
