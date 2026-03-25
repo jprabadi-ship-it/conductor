@@ -7,17 +7,5 @@
 
 &xiao_serial { status = "disabled"; };
 
-/ {
-    /* オートマウスの挙動を定義 */
-    zip_temp_layer: zip_temp_layer {
-        compatible = "zmk,input-processor-temp-layer";
-        #input-processor-cells = <2>;
-    };
-
-/* monokey_dongle.overlay の trackball_peripheral_listener 部分 */
-    trackball_peripheral_listener {
-        compatible = "zmk,input-listener";
-        /* device = <&vtrackball>; 行を削除します */
-        input-processors = <&zip_temp_layer 4 1000>;
-    };
-};
+/* ⚠️ エラーの原因となっていた trackball_peripheral_listener などの
+   オートマウス関連の記述を、一旦すべて削除しました */
