@@ -9,46 +9,7 @@
 
 &xiao_serial { status = "disabled"; };
 
-/* ⚠️最重要：右手のキー配線を復活させ、ピンのショートを解消します */
-&kscan0 {
-    col-gpios
-        = <&xiao_d 10 GPIO_ACTIVE_HIGH>
-        , <&xiao_d 9 GPIO_ACTIVE_HIGH>
-        , <&xiao_d 8 GPIO_ACTIVE_HIGH>
-        , <&xiao_d 5 GPIO_ACTIVE_HIGH>  /* ← トラックボール(D7)との競合を回避するためD5に修正 */
-        , <&xiao_d 4 GPIO_ACTIVE_HIGH>  /* ← D8の重複エラーを回避するためD4に修正 */
-        ;
-};
-
-&pinctrl {
-    spi0_default: spi0_default {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 5)>,     /* D3 (マトリクスと共有) */
-                    <NRF_PSEL(SPIM_MOSI, 0, 4)>,    /* D2 (マトリクスと共有) */
-                    <NRF_PSEL(SPIM_MISO, 0, 4)>;    /* D2 */
-        };
-    };
-    spi0_sleep: spi0_sleep {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 5)>,
-                    <NRF_PSEL(SPIM_MOSI, 0, 4)>,
-                    <NRF_PSEL(SPIM_MISO, 0, 4)>;
-            low-power-enable;
-        };
-    };
-};
-
-&spi0 {#include <zephyr/dt-bindings/input/input-event-codes.h>
-#include "monokey.dtsi"
-#include <input/processors.dtsi>
-
-&default_transform {
-    col-offset = <6>;
-};
-
-&xiao_serial { status = "disabled"; };
-
-/* 月曜日の完璧な列配線を復元！余計な row-gpios は削除 */
+/* 月曜日の完璧な列配線を復元 */
 &kscan0 {
     col-gpios
         = <&xiao_d 10 GPIO_ACTIVE_HIGH>
@@ -105,7 +66,7 @@
 
     trackball: trackball@0 {
         status = "okay";
-        compatible = "pixart,pmw3610-alt"; /* 最新ドライバ名 */
+        compatible = "pixart,pmw3610-alt";
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
@@ -115,34 +76,5 @@
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
-    };
-};
-    status = "okay";
-    compatible = "nordic,nrf-spim";
-    pinctrl-0 = <&spi0_default>;
-    pinctrl-1 = <&spi0_sleep>;
-    pinctrl-names = "default", "sleep";
-    cs-gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;          /* D7 (独立ピン) */
-
-    trackball: trackball@0 {
-        status = "okay";
-        compatible = "pixart,pmw3610-alt";
-        reg = <0>;
-        spi-max-frequency = <2000000>;
-        irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* D0 */
-        
-        /* --- badjeff版ドライバー用設定 --- */
-        cpi = <2000>;
-        evt-type = <INPUT_EV_REL>;
-        x-input-code = <INPUT_REL_X>;
-        y-input-code = <INPUT_REL_Y>;
-    };
-};
-
-/ {
-    trackball_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball>;
-        input-processors = <&zip_temp_layer 4 100000>, <&zip_xy_scaler 1 2>;
     };
 };
