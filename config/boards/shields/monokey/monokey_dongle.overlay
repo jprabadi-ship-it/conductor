@@ -8,20 +8,16 @@
 &xiao_serial { status = "disabled"; };
 
 / {
-    /* 窓口となる仮想デバイスの定義 */
-    vtrackball: vtrackball {
-        compatible = "zmk,virtual-input";
-    };
-
-    /* 仮想デバイスの動きを監視してレイヤー4を起動するリスナー */
-    trackball_peripheral_listener {
-        compatible = "zmk,input-listener";
-        device = <&vtrackball>; /* 必須項目を仮想デバイスで埋める */
-        input-processors = <&zip_temp_layer 4 1000>;
-    };
-
+    /* オートマウスの心臓部のみ定義 */
     zip_temp_layer: zip_temp_layer {
         compatible = "zmk,input-processor-temp-layer";
         #input-processor-cells = <2>;
+    };
+
+    /* ⚠️ 重要：device を書かないことで、
+       右手（子機）から届くすべての無線信号を直接フックします */
+    trackball_peripheral_listener {
+        compatible = "zmk,input-listener";
+        input-processors = <&zip_temp_layer 4 1000>;
     };
 };
