@@ -22,6 +22,7 @@
     /* 受信した信号をPCのマウス操作に変換するリスナー */
     trackball_peripheral_listener {
         compatible = "zmk,input-listener";
-        device = <&trackball_split>; /* ここで実在する受信デバイスを指定！ */
+        device = <&trackball_split>;
+        input-processors = <&zip_temp_layer 4 1000>;
     };
 };
