@@ -141,6 +141,7 @@
     };
 };
 
+/* 
 /* 🌟 LEDウィジェットの色設定（led_stripノードに対して指定） */
 &led_strip {
     layers = <
@@ -158,3 +159,4 @@
 &trackball_peripheral_listener {
     input-processors = <&zip_auto_layer MOUSE 600>;
 };
+*/
