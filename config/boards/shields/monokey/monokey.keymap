@@ -58,15 +58,15 @@
         };
     };
 
-# monokey.keymap の trackball_peripheral_listener 部分
+/* monokey.keymap 内の 65行目〜71行目付近を以下に差し替え */
     trackball_peripheral_listener {
         compatible = "zmk,input-listener";
         device = <&vtrackball>;
-        # &zip_temp_layer を使わず、標準のマウスキー挙動（automouse）をエミュレートします
-        input-processors = <&zip_xy_scaler 1 2>; 
+        /* 親機（ドングル）側でレイヤー4を起動させます */
+        input-processors = <&zip_temp_layer 4 1000>; 
     };
 
-     tap_dance {
+    tap_dance {
         compatible = "zmk,tap-dance";
 
         td_backspace {
