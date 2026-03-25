@@ -1,10 +1,23 @@
 #include "monokey.dtsi"
 
-/* ドングルなので物理的なキーマトリックスは持たない（空の設定） */
+/* ドングルなので物理的なキーマトリックスは持たない */
 &kscan0 {
     row-gpios = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
     col-gpios = <&xiao_d 1 GPIO_ACTIVE_HIGH>;
 };
 
-/* 起動を安定させるためシリアルを無効化 */
 &xiao_serial { status = "disabled"; };
+
+/* ⚠️ ここから下を追記：仮想トラックボールを定義します */
+/ {
+    vtrackball: vtrackball {
+        compatible = "zmk,virtual-input";
+    };
+
+    /* ドングル側で動きを監視し、レイヤー4を起動するリスナー */
+    trackball_peripheral_listener {
+        compatible = "zmk,input-listener";
+        device = <&vtrackball>;
+        input-processors = <&zip_temp_layer 4 1000>; /* 1秒間維持 */
+    };
+};
