@@ -18,5 +18,20 @@
         gpios = <&gpio0 17 GPIO_ACTIVE_LOW>;
         status = "okay";
     };
+
+    chosen {
+        zmk,underglow = &led_strip;
+    };
+
+    led_strip: list_rgb {
+        compatible = "zmk,rgbled-widget-leds";
+        label = "RGBLED Widget LEDs";
+
+        /* XIAO BLEの物理3色LEDを直接叩く設定 */
+        red-gpios   = <&gpio0 26 GPIO_ACTIVE_LOW>;
+        green-gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;
+        blue-gpios  = <&gpio0 6  GPIO_ACTIVE_LOW>;
+    };
+
 };
 
