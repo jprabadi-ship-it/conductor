@@ -3,7 +3,7 @@
 /* 1. 基本設定：使用しないシリアルを無効化 */
 &xiao_serial { status = "disabled"; };
 
-/* 2. キーマトリックス：ドングル自体のボタン用（もしあれば） */
+/* 2. キーマトリックス */
 &kscan0 {
     row-gpios = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
     col-gpios = <&xiao_d 1 GPIO_ACTIVE_HIGH>;
@@ -21,7 +21,7 @@
         };
     };
 
-    /* 4. 🌟 LEDの物理定義（ここを1つに集約しました） */
+    /* 4. 🌟 LEDの物理定義（ラベル参照を使わず、構造を単純化） */
     leds {
         compatible = "gpio-leds";
         status = "okay";
@@ -39,12 +39,7 @@
         };
     };
 
-    /* 5. 🌟 ZMKのシステムにこのLEDを紐付け（将来用） */
-    chosen {
-        zmk,underglow = &leds;
-    };
-
-    /* 6. マウス操作のリスナー設定（AML実装の土台） */
+    /* 5. マウス操作のリスナー設定（将来のAML実装用） */
     trackball_peripheral_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
