@@ -9,7 +9,7 @@
 
 &xiao_serial { status = "disabled"; };
 
-/* 月曜日の完璧な列配線を復元 */
+/* このキーボード配線で完全に直っているので、絶対に変えません */
 &kscan0 {
     col-gpios
         = <&xiao_d 10 GPIO_ACTIVE_HIGH>
@@ -33,11 +33,13 @@
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
+        
+        // 【標準の動作】
         input-processors = <&zip_temp_layer 4 100000>, <&zip_xy_scaler 1 2>;
     };
 };
 
-/* SPI配線も月曜日のまま復元 */
+/* SPIとトラックボール（完全に月曜日の記述を復元します） */
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
@@ -62,20 +64,14 @@
     pinctrl-0 = <&spi0_default>;
     pinctrl-1 = <&spi0_sleep>;
     pinctrl-names = "default", "sleep";
-
     cs-gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 
     trackball: trackball@0 {
         status = "okay";
-        compatible = "pixart,pmw3610-alt";
+        compatible = "pixart,pmw3610"; /* ←絶対に -alt をつけない！ */
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        
-        /* badjeff最新記法 */
-        cpi = <2000>;
-        evt-type = <INPUT_EV_REL>;
-        x-input-code = <INPUT_REL_X>;
-        y-input-code = <INPUT_REL_Y>;
+        scroll-layers = <5>; /* 月曜日にあった設定 */
     };
 };
