@@ -19,10 +19,10 @@
         };
     };
 
-    /* 受信した信号をPCのマウス操作に変換するリスナー */
+    /* 受信した信号をPCのマウス操作に変換するだけのシンプルな設定 */
     trackball_peripheral_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
-        input-processors = <&input_processor_temp_layer 4 1000>;
+        /* 🌟 エラーの原因となる自動レイヤー切り替えを一旦削除しました */
     };
 };
