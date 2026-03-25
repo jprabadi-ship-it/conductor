@@ -21,12 +21,12 @@
 };
 
 / {
+    /* monokey_R.overlay の trackball_listener 部分を書き換え */
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
-        
-        /* 修正点：エラーの元になる &zip_temp_layer を削除し、scaler のみにします */
-        input-processors = <&zip_xy_scaler 1 2>;
+        /* 子機ではレイヤーを見に行かないシンプルな scaler のみにします */
+        input-processors = <&zip_xy_scaler 1 2>; 
     };
 };
 
