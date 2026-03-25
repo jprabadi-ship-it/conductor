@@ -1,6 +1,5 @@
 #include "monokey.dtsi"
 
-/* ドングルなので物理的なキーマトリックスは持たない */
 &kscan0 {
     row-gpios = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
     col-gpios = <&xiao_d 1 GPIO_ACTIVE_HIGH>;
@@ -8,22 +7,10 @@
 
 &xiao_serial { status = "disabled"; };
 
-/* monokey_dongle.overlay の末尾（ / { ... }; の中）を以下に差し替え */
 / {
-    vtrackball: vtrackball {
-        compatible = "zmk,virtual-input";
-    };
-
-    /* ここでオートマウスの挙動を定義します */
+    /* 仮想デバイスの定義を「zmk,input-listener」が直接扱える形にします */
     zip_temp_layer: zip_temp_layer {
         compatible = "zmk,input-processor-temp-layer";
         #input-processor-cells = <2>;
-    };
-
-    trackball_peripheral_listener {
-        compatible = "zmk,input-listener";
-        device = <&vtrackball>;
-        /* マウスが動いたらレイヤー4へ1秒間切り替える命令 */
-        input-processors = <&zip_temp_layer 4 1000>;
     };
 };
