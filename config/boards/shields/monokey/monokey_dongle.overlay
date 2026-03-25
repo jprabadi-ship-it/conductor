@@ -8,17 +8,16 @@
 
 &xiao_serial { status = "disabled"; };
 
-/* ⚠️ ここから下を追記：仮想トラックボールとリスナーを定義 */
+/* ⚠️ ここから下を追記：仮想デバイスとリスナーの定義 */
 / {
     vtrackball: vtrackball {
         compatible = "zmk,virtual-input";
     };
 
-    /* ドングル側で動きを監視し、レイヤー4を起動するリスナー */
     trackball_peripheral_listener {
         compatible = "zmk,input-listener";
         device = <&vtrackball>;
-        /* レイヤー4を1秒間維持する設定 */
+        /* 親機（ドングル）側でレイヤー4を起動させます */
         input-processors = <&zip_temp_layer 4 1000>; 
     };
 };
