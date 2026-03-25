@@ -1,5 +1,4 @@
 #include "monokey.dtsi"
-#include <dt-bindings/zmk/input_processor.h> // 必要な定義を読み込み
 
 &kscan0 {
     row-gpios = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
@@ -9,12 +8,13 @@
 &xiao_serial { status = "disabled"; };
 
 / {
-    /* ⚠️ ここにスケーラー（解像度調整）の定義を追加 */
+    /* スケーラー（解像度調整）の定義 */
     zip_xy_scaler: zip_xy_scaler {
         compatible = "zmk,input-processor-scaler";
         #input-processor-cells = <2>;
-        type = <INPUT_EV_REL>;
-        codes = <INPUT_REL_X>, <INPUT_REL_Y>;
+        /* インクルードを使わず直接指定 */
+        type = <0x02>; /* INPUT_EV_REL */
+        codes = <0x00>, <0x01>; /* INPUT_REL_X, INPUT_REL_Y */
     };
 
     /* オートマウスの挙動定義 */
@@ -26,7 +26,6 @@
     /* グローバル・リスナー：すべての入力信号を監視 */
     trackball_peripheral_listener {
         compatible = "zmk,input-listener";
-        /* 定義したスケーラーとレイヤー切り替えを適用 */
         input-processors = <&zip_xy_scaler 1 2>, <&zip_temp_layer 4 1000>;
     };
 };
