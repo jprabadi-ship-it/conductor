@@ -21,21 +21,19 @@
         };
     };
 
-    /* 4. 🌟 LEDの物理定義（エラーの原因となる複雑なラベル参照を排除） */
+    /* 🌟 ラベルを使わず、直接 GPIO 0 の 26番と30番を定義 */
     leds {
         compatible = "gpio-leds";
         status = "okay";
 
-        /* 赤色LEDを強制点灯 */
-        dongle_red: led_0 {
+        /* 赤色: P0.26 */
+        red_direct: led_0 {
             gpios = <&gpio0 26 GPIO_ACTIVE_LOW>;
-            label = "Dongle Red LED";
         };
 
-        /* 緑色LEDを強制点灯（赤＋緑＝オレンジ） */
-        dongle_green: led_1 {
+        /* 緑色: P0.30 */
+        green_direct: led_1 {
             gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;
-            label = "Dongle Green LED";
         };
     };
 
