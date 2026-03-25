@@ -2,8 +2,8 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: pite1222  # <-- badjeffから戻す！
-      url-base: https://github.com/pite1222  # <-- badjeffから戻す！
+    - name: badjeff
+      url-base: https://github.com/badjeff
     - name: caksoylar
       url-base: https://github.com/caksoylar
     - name: 4mplelab
@@ -14,7 +14,7 @@ manifest:
       revision: v0.3
       import: app/west.yml
     - name: zmk-pmw3610-driver
-      remote: badjeff  # <-- pite1222
+      remote: badjeff
       revision: main
     - name: zmk-rgbled-widget
       remote: caksoylar
