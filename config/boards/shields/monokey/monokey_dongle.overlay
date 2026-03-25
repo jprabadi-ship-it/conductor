@@ -37,6 +37,28 @@
         };
     };
 
+    /* 🌟 システムに「この led_strip を使って光れ」と教える */
+    chosen {
+        zmk,underglow = &led_strip;
+    };
+
+    /* 物理的なLEDの定義 */
+    led_strip: leds {
+        compatible = "gpio-leds";
+        status = "okay";
+
+        /* 赤色LED（常時点灯） */
+        led_red: led_0 {
+            gpios = <&gpio0 26 GPIO_ACTIVE_LOW>;
+            label = "Red LED";
+        };
+
+        /* 緑色LED（常時点灯：赤と混ざってオレンジになります） */
+        led_green: led_1 {
+            gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;
+            label = "Green LED";
+        };
+    };
 
     /* 受信した信号をPCのマウス操作に変換するだけのシンプルな設定 */
     trackball_peripheral_listener {
