@@ -8,24 +8,20 @@
 &xiao_serial { status = "disabled"; };
 
 / {
-    /* スケーラー（解像度調整）の定義 */
-    zip_xy_scaler: zip_xy_scaler {
-        compatible = "zmk,input-processor-scaler";
-        #input-processor-cells = <2>;
-        /* インクルードを使わず直接指定 */
-        type = <0x02>; /* INPUT_EV_REL */
-        codes = <0x00>, <0x01>; /* INPUT_REL_X, INPUT_REL_Y */
+    /* 窓口となる仮想デバイスの定義 */
+    vtrackball: vtrackball {
+        compatible = "zmk,virtual-input";
     };
 
-    /* オートマウスの挙動定義 */
+    /* 仮想デバイスの動きを監視してレイヤー4を起動するリスナー */
+    trackball_peripheral_listener {
+        compatible = "zmk,input-listener";
+        device = <&vtrackball>; /* 必須項目を仮想デバイスで埋める */
+        input-processors = <&zip_temp_layer 4 1000>;
+    };
+
     zip_temp_layer: zip_temp_layer {
         compatible = "zmk,input-processor-temp-layer";
         #input-processor-cells = <2>;
-    };
-
-    /* グローバル・リスナー：すべての入力信号を監視 */
-    trackball_peripheral_listener {
-        compatible = "zmk,input-listener";
-        input-processors = <&zip_xy_scaler 1 2>, <&zip_temp_layer 4 1000>;
     };
 };
