@@ -9,7 +9,7 @@
 
 &xiao_serial { status = "disabled"; };
 
-/* このキーボード配線で完全に直っているので、絶対に変えません */
+/* キーボード配線 */
 &kscan0 {
     col-gpios
         = <&xiao_d 10 GPIO_ACTIVE_HIGH>
@@ -20,26 +20,17 @@
         ;
 };
 
-/* 非マウスキーでAML解除 */
-&zip_temp_layer {
-    excluded-positions = <
-        18 // L
-        17 // K
-    >;
-    require-prior-idle-ms = <200>;
-};
-
 / {
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
         
-        // 【標準の動作】
-        input-processors = <&zip_temp_layer 4 100000>, <&zip_xy_scaler 1 2>;
+        /* 修正点：エラーの元になる &zip_temp_layer を削除し、scaler のみにします */
+        input-processors = <&zip_xy_scaler 1 2>;
     };
 };
 
-/* SPIとトラックボール（完全に月曜日の記述を復元します） */
+/* SPIとトラックボール（月曜日の完全復元） */
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
@@ -68,10 +59,10 @@
 
     trackball: trackball@0 {
         status = "okay";
-        compatible = "pixart,pmw3610"; /* ←絶対に -alt をつけない！ */
+        compatible = "pixart,pmw3610";
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        scroll-layers = <5>; /* 月曜日にあった設定 */
+        scroll-layers = <5>;
     };
 };
