@@ -14,11 +14,10 @@
         #input-processor-cells = <2>;
     };
 
-    /* ⚠️ 修正ポイント：device = <&vtrackball>; を削除 */
+/* monokey_dongle.overlay の trackball_peripheral_listener 部分 */
     trackball_peripheral_listener {
         compatible = "zmk,input-listener";
-        /* device 行を消すことで、リンクエラーを回避しつつ
-           右手から届くすべての入力信号をキャッチします */
+        /* device = <&vtrackball>; 行を削除します */
         input-processors = <&zip_temp_layer 4 1000>;
     };
 };
