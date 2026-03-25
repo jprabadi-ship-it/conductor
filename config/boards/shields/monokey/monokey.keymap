@@ -58,7 +58,7 @@
         };
     };
 
-/* monokey.keymap 内の 65行目〜71行目付近を以下に差し替え */
+/* monokey.keymap の 65行目〜71行目付近の既存リスナーを以下で上書き */
     trackball_peripheral_listener {
         compatible = "zmk,input-listener";
         device = <&vtrackball>;
