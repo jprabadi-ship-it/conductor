@@ -43,6 +43,7 @@ trackball: trackball@0 {
         evt-type = <0x02>; /* INPUT_EV_REL */
         x-input-code = <0x00>; /* INPUT_REL_X */
         y-input-code = <0x01>; /* INPUT_REL_Y */
+        invert-x;
     };
 };
 
