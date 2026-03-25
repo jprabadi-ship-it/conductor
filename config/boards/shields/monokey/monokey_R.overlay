@@ -50,4 +50,10 @@
         device = <&trackball>;
         input-processors = <&zip_temp_layer 4 100000>, <&zip_xy_scaler 1 2>;
     };
+
+    chg_stat: chg_stat {
+        compatible = "custom,chg-stat";
+        gpios = <&gpio0 17 GPIO_ACTIVE_LOW>;
+        status = "okay";
+    };
 };
