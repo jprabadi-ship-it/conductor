@@ -14,12 +14,11 @@
         #input-processor-cells = <2>;
     };
 
-    /* ⚠️ 重要：device 行と vtrackball 定義を削除します。
-       これにより「存在しないデバイス」を探す処理がなくなり、リンクエラーを回避できます。
-       ZMKの仕様で、deviceを指定しないリスナーは届いた信号すべてに反応します。
-    */
+    /* ⚠️ 修正ポイント：device = <&vtrackball>; を削除 */
     trackball_peripheral_listener {
         compatible = "zmk,input-listener";
+        /* device 行を消すことで、リンクエラーを回避しつつ
+           右手から届くすべての入力信号をキャッチします */
         input-processors = <&zip_temp_layer 4 1000>;
     };
 };
