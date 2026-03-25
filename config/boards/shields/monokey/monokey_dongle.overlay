@@ -8,16 +8,22 @@
 
 &xiao_serial { status = "disabled"; };
 
-/* ⚠️ ここから下を追記：仮想デバイスとリスナーの定義 */
+/* monokey_dongle.overlay の末尾（ / { ... }; の中）を以下に差し替え */
 / {
     vtrackball: vtrackball {
         compatible = "zmk,virtual-input";
     };
 
+    /* ここでオートマウスの挙動を定義します */
+    zip_temp_layer: zip_temp_layer {
+        compatible = "zmk,input-processor-temp-layer";
+        #input-processor-cells = <2>;
+    };
+
     trackball_peripheral_listener {
         compatible = "zmk,input-listener";
         device = <&vtrackball>;
-        /* 親機（ドングル）側でレイヤー4を起動させます */
-        input-processors = <&zip_temp_layer 4 1000>; 
+        /* マウスが動いたらレイヤー4へ1秒間切り替える命令 */
+        input-processors = <&zip_temp_layer 4 1000>;
     };
 };
