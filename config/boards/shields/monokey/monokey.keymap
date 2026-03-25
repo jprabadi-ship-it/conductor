@@ -58,6 +58,12 @@
         };
     };
 
+    /* 親機（ドングル）側でマウスの動きを監視し、レイヤー4を起動させる設定 */
+    trackball_peripheral_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball>; // 仮想的なデバイス参照
+        input-processors = <&zip_temp_layer 4 100000>; // 100ms間マウスレイヤーを維持
+    };
 
      tap_dance {
         compatible = "zmk,tap-dance";
