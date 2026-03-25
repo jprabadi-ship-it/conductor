@@ -45,3 +45,17 @@ trackball: trackball@0 {
         y-input-code = <0x01>; /* INPUT_REL_Y */
     };
 };
+
+/* 右手で読み取ったトラックボールの動きを、無線でドングルへ送るための設定 */
+/ {
+    split_inputs {
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        trackball_split: trackball@0 {
+            compatible = "zmk,input-split";
+            reg = <0>;
+            device = <&trackball>; /* ローカルのトラックボールの動きを拾う */
+        };
+    };
+};
