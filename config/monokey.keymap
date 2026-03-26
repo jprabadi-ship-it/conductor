@@ -3,7 +3,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-/* マウス移動とスクロールの加速設定 [cite: 59] */
+/* 加速設定 [cite: 58, 59] */
 &mmv {
     time-to-max-speed-ms = <500>;
     acceleration-exponent = <1>;
@@ -22,7 +22,6 @@
 &lt { quick-tap-ms = <200>; };
 
 / {
-    /* chosen ブロックから LED 関連の記述を一旦削除（エラー回避） */
     chosen { };
 
     combos {
@@ -43,7 +42,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        /* 0: 月曜日のデフォルトレイヤー [cite: 67] */
+        /* 0: Default [cite: 67, 68, 69, 70] */
         default_layer {
             bindings = <
 &kp Q         &kp W      &kp E     &kp R      &kp T                                        &kp Y        &kp U  &kp I      &kp O                    &kp BACKSPACE
@@ -54,34 +53,11 @@
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
         };
 
-        FUNCTION {
-            bindings = <
-&kp EXCLAMATION       &kp AT_SIGN               &kp HASH        &kp DOLLAR  &kp PERCENT                  &kp CARET  &kp AMPERSAND  &kp ASTERISK      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
-&kp LS(LG(NUMBER_4))  &kp LS(LG(LC(NUMBER_4)))  &kp LS(LG(N5))  &trans      &trans                       &kp MINUS  &kp EQUAL      &kp LEFT_BRACKET  &kp RIGHT_BRACKET     &kp BACKSLASH
-&kp LEFT_SHIFT        &trans                    &trans          &trans      &trans                       &trans     &trans         &kp SEMICOLON     &kp SINGLE_QUOTE      &kp GRAVE
-&kp ESCAPE            &trans                    &trans          &trans      &mo 6        &trans  &trans  &trans                                      &kp C_VOLUME_DOWN     &kp C_VOLUME_UP
-            >;
-        };
+        FUNCTION { bindings = < &kp EXCLAMATION &kp AT_SIGN &kp HASH &kp DOLLAR &kp PERCENT &kp CARET &kp AMPERSAND &kp ASTERISK &kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LS(LG(NUMBER_4)) &kp LS(LG(LC(NUMBER_4))) &kp LS(LG(N5)) &trans &trans &kp MINUS &kp EQUAL &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp BACKSLASH &kp LEFT_SHIFT &trans &trans &trans &trans &trans &trans &kp SEMICOLON &kp SINGLE_QUOTE &kp GRAVE &kp ESCAPE &trans &trans &trans &mo 6 &trans &trans &trans &kp C_VOLUME_DOWN &kp C_VOLUME_UP >; };
+        NUMERIC { bindings = < &trans &trans &trans &trans &trans &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_NUMLOCK &trans &trans &trans &trans &trans &trans &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_PLUS &kp KP_MINUS &kp LEFT_SHIFT &trans &trans &trans &trans &kp KP_NUMBER_1 &kp KP_N2 &kp KP_N3 &kp KP_MULTIPLY &kp KP_DIVIDE &trans &trans &trans &trans &trans &trans &kp KP_DOT &kp KP_N0 &kp C_VOLUME_DOWN &kp C_VOLUME_UP >; };
+        ARROW { bindings = < &trans &trans &kp LS(LC(NUMBER_1)) &kp LS(LC(NUMBER_2)) &kp LS(LC(NUMBER_3)) &kp LC(UP_ARROW) &kp LC(LEFT_ARROW) &kp UP_ARROW &kp LC(RIGHT) &kp LC(DOWN_ARROW) &trans &trans &kp LS(LC(NUMBER_4)) &kp LS(LC(N5)) &kp LS(LC(NUMBER_6)) &kp LC(A) &kp LEFT_ARROW &kp DOWN_ARROW &kp RIGHT_ARROW &kp LC(E) &trans &trans &kp LS(LC(N7)) &kp LS(LC(N8)) &kp LS(LC(N9)) &kp C_PREVIOUS &kp LG(LEFT) &mkp MB3 &kp RG(RIGHT) &kp C_NEXT &trans &trans &trans &trans &trans &trans &trans &trans &kp C_BRI_DEC &kp C_BRI_INC >; sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>; };
 
-        NUMERIC {
-            bindings = <
-&trans          &trans  &trans  &trans  &trans                      &kp KP_N7        &kp KP_N8  &kp KP_N9  &kp KP_NUMLOCK     &trans
-&trans          &trans  &trans  &trans  &trans                      &kp KP_N4        &kp KP_N5  &kp KP_N6  &kp KP_PLUS        &kp KP_MINUS
-&kp LEFT_SHIFT  &trans  &trans  &trans  &trans                      &kp KP_NUMBER_1  &kp KP_N2  &kp KP_N3  &kp KP_MULTIPLY    &kp KP_DIVIDE
-&trans          &trans  &trans  &trans  &trans  &trans  &kp KP_DOT  &kp KP_N0                              &kp C_VOLUME_DOWN  &kp C_VOLUME_UP
-            >;
-        };
-
-        ARROW {
-            bindings = <
-&trans  &trans  &kp LS(LC(NUMBER_1))  &kp LS(LC(NUMBER_2))  &kp LS(LC(NUMBER_3))                  &kp LC(UP_ARROW)  &kp LC(LEFT_ARROW)  &kp UP_ARROW    &kp LC(RIGHT)    &kp LC(DOWN_ARROW)
-&trans  &trans  &kp LS(LC(NUMBER_4))  &kp LS(LC(N5))        &kp LS(LC(NUMBER_6))                  &kp LC(A)         &kp LEFT_ARROW      &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LC(E)
-&trans  &trans  &kp LS(LC(N7))        &kp LS(LC(N8))        &kp LS(LC(N9))                        &kp C_PREVIOUS    &kp LG(LEFT)        &mkp MB3        &kp RG(RIGHT)    &kp C_NEXT
-&trans  &trans  &trans                &trans                &trans                &trans  &trans  &trans                                               &kp C_BRI_DEC    &kp C_BRI_INC
-            >;
-            sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
-        };
-
+        /* 4: MOUSE (K=MB1, L=MB2) [cite: 83] */
         MOUSE {
             bindings = <
 &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans    &trans    &trans
@@ -91,28 +67,9 @@
             >;
         };
 
-        SCROLL {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans
-            >;
-        };
-
-        Bluetooth {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans                   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &trans
-&trans  &trans  &trans  &trans  &trans                   &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &trans
-&trans  &trans  &trans  &trans  &trans                   &trans         &trans         &trans         &trans         &trans
-&trans  &trans  &trans  &trans  &trans  &kp F19  &trans  &bootloader                   &bt BT_CLR     &bt BT_CLR_ALL
-            >;
-        };
+        SCROLL { bindings = < &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans >; };
+        Bluetooth { bindings = < &trans &trans &trans &trans &trans &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &trans &trans &trans &trans &trans &trans &bt BT_DISC 0 &bt BT_DISC 1 &bt BT_DISC 2 &bt BT_DISC 3 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &kp F19 &trans &bootloader &bt BT_CLR &bt BT_CLR_ALL >; };
     };
 };
 
-/* 🌟 今回の「Parse error」を回避する正規の呼び出し方法 [cite: 57] */
-&trackball_peripheral_listener {
-    status = "okay";
-    input-processors = <&zip_temp_layer MOUSE 1000>;
-};
+/* 🌟 ここには何も書かない（すべてoverlay側に定義を移したため） */
