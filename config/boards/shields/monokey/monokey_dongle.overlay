@@ -8,6 +8,8 @@
 };
 
 / {
+
+/* 1. ドングル側の「受信機」：右手から送られてくる0番のトラックボールデータを受け取る箱 */
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
@@ -15,8 +17,16 @@
         trackball_split: trackball@0 {
             compatible = "zmk,input-split";
             reg = <0>;
+            /* ※ドングルには物理センサーが付いていないので、device = <&trackball>; は書きません */
         };
     };
+
+    /* 2. ドングル側の「翻訳係」：受信機に入ったデータを、PCのマウスの動きとして出力する */
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball_split>;
+    };
+
 
     leds {
         compatible = "gpio-leds";
