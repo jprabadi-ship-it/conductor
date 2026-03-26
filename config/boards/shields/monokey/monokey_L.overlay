@@ -34,11 +34,3 @@
     };
 
 };
-
-&spi0 {
-    status = "disabled";
-};
-
-&trackball {
-    status = "disabled";
-};
