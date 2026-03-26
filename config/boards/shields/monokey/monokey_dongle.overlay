@@ -27,24 +27,4 @@
         device = <&trackball_split>;
     };
 
-
-    /* 1. 標準のLED機能を無効化（ピンの奪い合いによる自爆を防ぐため） */
-    leds {
-        status = "disabled";
-    };
-
-    /* 2. RGBLEDウィジェットを使う宣言 */
-    chosen {
-        zmk,underglow = &led_strip;
-    };
-
-    /* 3. XIAO BLEの物理RGBピンをウィジェットに割り当て */
-    led_strip: list_rgb {
-        compatible = "zmk,rgbled-widget-leds";
-        label = "RGBLED Widget LEDs";
-        red-gpios   = <&gpio0 26 GPIO_ACTIVE_LOW>;
-        green-gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;
-        blue-gpios  = <&gpio0 6  GPIO_ACTIVE_LOW>;
-    };
-
 };
