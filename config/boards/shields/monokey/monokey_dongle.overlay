@@ -18,12 +18,7 @@
         };
     };
 
-    trackball_peripheral_listener: trackball_peripheral_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball_split>;
-        /* 🌟 "MOUSE" ではなく、直接レイヤー番号の "4" を指定します */
-        input-processors = <&zip_temp_layer 4 1000>;
-    };
+    /* 🌟 エラーの原因だったリスナーブロックを完全に削除しました */
 
     leds {
         compatible = "gpio-leds";
