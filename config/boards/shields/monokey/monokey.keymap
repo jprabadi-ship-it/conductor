@@ -157,10 +157,8 @@
 };
 
 /* 🌟 工程3: トラックボール連動設定 */
-/* monokey.keymap の一番下 */
 &trackball_peripheral_listener {
     status = "okay";
-    device = <&trackball_split>; /* 🌟 これを追加：overlayで定義した名前を指定 */
+    /* device = <&trackball_split>; は overlay側にあるので消してもOKですが、あっても大丈夫です */
     input-processors = <&zip_auto_layer MOUSE 1000>;
 };
-
