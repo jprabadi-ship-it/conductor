@@ -8,7 +8,6 @@
 };
 
 / {
-    /* 1. 無線信号の受信ノード */
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
@@ -19,13 +18,13 @@
         };
     };
 
-    /* 2. 入力イベントのリスナー（🌟ここに名前を付ける） */
+    /* 🌟 ここで「1000msの間 MOUSEレイヤーにする」という命令を直接書き込む */
     trackball_peripheral_listener: trackball_peripheral_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
+        input-processors = <&zip_temp_layer MOUSE 1000>;
     };
 
-    /* 3. LED設定 */
     leds {
         compatible = "gpio-leds";
         status = "okay";
