@@ -13,7 +13,7 @@ manifest:
   projects:
     - name: zmk-auto-layer
       remote: urob
-      revision: main
+      revision: v0.3
     - name: zmk
       remote: zmkfirmware
       revision: v0.3
