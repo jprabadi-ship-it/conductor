@@ -8,14 +8,28 @@
 };
 
 / {
+    /* 1. 無線信号の受信ノード */
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
 
-        /* 🌟 ここにラベル trackball_peripheral_listener を必ずつける */
-        trackball_peripheral_listener: trackball@0 {
+        trackball_split: trackball@0 {
             compatible = "zmk,input-split";
             reg = <0>;
         };
+    };
+
+    /* 2. 入力イベントのリスナー（🌟ここに名前を付ける） */
+    trackball_peripheral_listener: trackball_peripheral_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball_split>;
+    };
+
+    /* 3. LED設定 */
+    leds {
+        compatible = "gpio-leds";
+        status = "okay";
+        red_direct: led_0 { gpios = <&gpio0 26 GPIO_ACTIVE_LOW>; };
+        green_direct: led_1 { gpios = <&gpio0 30 GPIO_ACTIVE_LOW>; };
     };
 };
