@@ -1,16 +1,16 @@
 #include "monokey.dtsi"
 
-/* 1. 基本設定：使用しないシリアルを無効化 [cite: 59] */
+/* 1. 基本設定：使用しないシリアルを無効化 */
 &xiao_serial { status = "disabled"; };
 
-/* 2. キーマトリックス [cite: 60] */
+/* 2. キーマトリックス（ドングル上の物理スイッチ用） */
 &kscan0 {
     row-gpios = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
     col-gpios = <&xiao_d 1 GPIO_ACTIVE_HIGH>;
 };
 
 / {
-    /* 3. 無線信号の受信設定  */
+    /* 3. 無線信号の受信設定 */
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
@@ -21,13 +21,16 @@
         };
     };
 
-    /* 4. マウス操作のリスナー設定（🌟ルートノード内に配置  ） */
+    /* 4. マウス操作のリスナー設定（🌟信号の橋渡しとプロセッサを集約） */
     trackball_peripheral_listener: trackball_peripheral_listener {
         compatible = "zmk,input-listener";
-        device = <&trackball_split>;
+        device = <&trackball_split>; /* 受信した信号をソースに指定 */
+        
+        /* 🌟 ドングル側で直接レイヤー切り替えを命令する */
+        input-processors = <&zip_auto_layer MOUSE 1000>;
     };
 
-    /* 5. LED設定（ピン直叩き仕様 [cite: 65, 66, 67, 68] ） */
+    /* 5. LED設定（物理ピン制御） */
     leds {
         compatible = "gpio-leds";
         status = "okay";
