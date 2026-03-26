@@ -12,18 +12,10 @@
         #address-cells = <1>;
         #size-cells = <0>;
 
-        /* 🌟 ここにラベル trackball_peripheral_listener を追加 */
+        /* 🌟 ここにラベル trackball_peripheral_listener を必ずつける */
         trackball_peripheral_listener: trackball@0 {
             compatible = "zmk,input-split";
             reg = <0>;
         };
-    };
-
-    /* LED設定（もしあれば。なければ削除可） */
-    leds {
-        compatible = "gpio-leds";
-        status = "okay";
-        red_direct: led_0 { gpios = <&gpio0 26 GPIO_ACTIVE_LOW>; };
-        green_direct: led_1 { gpios = <&gpio0 30 GPIO_ACTIVE_LOW>; };
     };
 };
