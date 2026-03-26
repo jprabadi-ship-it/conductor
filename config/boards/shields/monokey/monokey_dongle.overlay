@@ -1,46 +1,34 @@
-#include "monokey.dtsi"
+#include "monokey.dtsi" [cite: 1]
 
-/* 1. 基本設定：使用しないシリアルを無効化 */
-&xiao_serial { status = "disabled"; };
+&xiao_serial { status = "disabled"; }; [cite: 1]
 
-/* 2. キーマトリックス（ドングル上の物理スイッチ用） */
 &kscan0 {
-    row-gpios = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
-    col-gpios = <&xiao_d 1 GPIO_ACTIVE_HIGH>;
+    row-gpios = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; [cite: 2]
+    col-gpios = <&xiao_d 1 GPIO_ACTIVE_HIGH>; [cite: 3]
 };
 
 / {
-    /* 3. 無線信号の受信設定 */
     split_inputs {
-        #address-cells = <1>;
-        #size-cells = <0>;
+        #address-cells = <1>; [cite: 3]
+        #size-cells = <0>; [cite: 4]
 
         trackball_split: trackball@0 {
-            compatible = "zmk,input-split";
-            reg = <0>;
+            compatible = "zmk,input-split"; [cite: 4]
+            reg = <0>; [cite: 5]
         };
     };
 
-    /* 4. マウス操作のリスナー設定（🌟信号の橋渡しとプロセッサを集約） */
     trackball_peripheral_listener: trackball_peripheral_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball_split>; /* 受信した信号をソースに指定 */
-        
-        /* 🌟 ドングル側で直接レイヤー切り替えを命令する */
+        compatible = "zmk,input-listener"; [cite: 5]
+        device = <&trackball_split>; [cite: 6]
+        /* ドングル側でも直接レイヤー命令を出す設定 */
         input-processors = <&zip_auto_layer MOUSE 1000>;
     };
 
-    /* 5. LED設定（物理ピン制御） */
     leds {
-        compatible = "gpio-leds";
-        status = "okay";
-
-        red_direct: led_0 {
-            gpios = <&gpio0 26 GPIO_ACTIVE_LOW>;
-        };
-
-        green_direct: led_1 {
-            gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;
-        };
+        compatible = "gpio-leds"; [cite: 6]
+        status = "okay"; [cite: 7]
+        red_direct: led_0 { gpios = <&gpio0 26 GPIO_ACTIVE_LOW>; }; [cite: 7, 8]
+        green_direct: led_1 { gpios = <&gpio0 30 GPIO_ACTIVE_LOW>; }; [cite: 9]
     };
 };
