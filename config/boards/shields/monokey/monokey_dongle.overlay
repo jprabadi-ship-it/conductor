@@ -18,11 +18,11 @@
         };
     };
 
-    /* 🌟 ここで「1000msの間 MOUSEレイヤーにする」という命令を直接書き込む */
     trackball_peripheral_listener: trackball_peripheral_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
-        input-processors = <&zip_temp_layer MOUSE 1000>;
+        /* 🌟 "MOUSE" ではなく、直接レイヤー番号の "4" を指定します */
+        input-processors = <&zip_temp_layer 4 1000>;
     };
 
     leds {
