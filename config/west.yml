@@ -11,13 +11,13 @@ manifest:
     - name: 4mplelab
       url-base: https://github.com/4mplelab
   projects:
-    - name: zmk-auto-layer
-      remote: urob
-      revision: v0.3
     - name: zmk
       remote: zmkfirmware
       revision: v0.3
       import: app/west.yml
+    - name: zmk-auto-layer
+      remote: urob
+      revision: v0.3
     - name: zmk-pmw3610-driver
       remote: badjeff
       revision: main
