@@ -142,7 +142,7 @@
     };
 };
 
-/* 
+
 /* 🌟 LEDウィジェットの色設定（led_stripノードに対して指定） */
 &led_strip {
     layers = <
@@ -163,4 +163,4 @@
     device = <&trackball_split>; /* 🌟 これを追加：overlayで定義した名前を指定 */
     input-processors = <&zip_auto_layer MOUSE 1000>;
 };
-*/
+
