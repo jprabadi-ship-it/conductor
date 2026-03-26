@@ -158,6 +158,7 @@
 
 /* 🌟 工程3: トラックボール連動設定 */
 &trackball_peripheral_listener {
-    input-processors = <&zip_auto_layer MOUSE 600>;
+    status = "okay";
+    input-processors = <&zip_auto_layer MOUSE 1000>;
 };
 */
