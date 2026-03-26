@@ -26,5 +26,5 @@ include:
   - board: xiao_ble//zmk
     shield: settings_reset
 # 修正後
-  - board: xiao_ble
-    shield: xiao_ble//zmk monokey_dongle rgbled_adapter_studio_rpc_usb_uart
+  - board: xiao_ble//zmk
+    shield: monokey_dongle rgbled_adapter_studio_rpc_usb_uart
