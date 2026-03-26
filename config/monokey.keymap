@@ -106,7 +106,8 @@
     };
 };
 
-/* 🌟 今回のエラー回避の鍵：定義済みの入力リスナーへ直接上書き */
-&{/split_inputs/trackball@0} {
+/* 🌟 今回の「Parse error」を100%回避する書き方 */
+&trackball_peripheral_listener {
+    status = "okay";
     input-processors = <&zip_temp_layer MOUSE 1000>;
 };
