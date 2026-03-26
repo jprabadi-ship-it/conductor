@@ -18,8 +18,6 @@
         };
     };
 
-    /* 🌟 エラーの原因だったリスナーブロックを完全に削除しました */
-
     leds {
         compatible = "gpio-leds";
         status = "okay";
