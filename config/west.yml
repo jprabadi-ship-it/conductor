@@ -6,9 +6,8 @@ manifest:
       url-base: https://github.com/badjeff
     - name: caksoylar
       url-base: https://github.com/caksoylar
-    # 🌟 1箇所目：小文字の amplelab に変更
-    - name: amplelab
-      url-base: https://github.com/amplelab
+    - name: 4mplelab
+      url-base: https://github.com/4mplelab
 
   projects:
     - name: zmk
@@ -22,6 +21,5 @@ manifest:
       remote: caksoylar
       revision: main
     - name: zmk-feature-charge-indicator
-      # 🌟 2箇所目：小文字の amplelab に変更
-      remote: amplelab
+      remote: 4mplelab
       revision: main
