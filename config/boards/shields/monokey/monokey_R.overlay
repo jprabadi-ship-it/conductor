@@ -59,10 +59,5 @@ trackball: trackball@0 {
             device = <&trackball>; /* ローカルのトラックボールの動きを拾う */
         };
 
-        trackball_relay {
-            compatible = "zmk,input-split";
-            device = <&trackball>;
-        };
-
     };
 };
