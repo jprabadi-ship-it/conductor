@@ -1,34 +1,29 @@
-#include "monokey.dtsi" [cite: 1]
+#include "monokey.dtsi"
 
-&xiao_serial { status = "disabled"; }; [cite: 1]
+&xiao_serial { status = "disabled"; };
 
 &kscan0 {
-    row-gpios = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; [cite: 2]
-    col-gpios = <&xiao_d 1 GPIO_ACTIVE_HIGH>; [cite: 3]
+    row-gpios = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+    col-gpios = <&xiao_d 1 GPIO_ACTIVE_HIGH>;
 };
 
 / {
     split_inputs {
-        #address-cells = <1>; [cite: 3]
-        #size-cells = <0>; [cite: 4]
+        #address-cells = <1>;
+        #size-cells = <0>;
 
-        trackball_split: trackball@0 {
-            compatible = "zmk,input-split"; [cite: 4]
-            reg = <0>; [cite: 5]
+        /* 🌟 ここにラベル trackball_peripheral_listener を追加 */
+        trackball_peripheral_listener: trackball@0 {
+            compatible = "zmk,input-split";
+            reg = <0>;
         };
     };
 
-    trackball_peripheral_listener: trackball_peripheral_listener {
-        compatible = "zmk,input-listener"; [cite: 5]
-        device = <&trackball_split>; [cite: 6]
-        /* ドングル側でも直接レイヤー命令を出す設定 */
-        input-processors = <&zip_auto_layer MOUSE 1000>;
-    };
-
+    /* LED設定（もしあれば。なければ削除可） */
     leds {
-        compatible = "gpio-leds"; [cite: 6]
-        status = "okay"; [cite: 7]
-        red_direct: led_0 { gpios = <&gpio0 26 GPIO_ACTIVE_LOW>; }; [cite: 7, 8]
-        green_direct: led_1 { gpios = <&gpio0 30 GPIO_ACTIVE_LOW>; }; [cite: 9]
+        compatible = "gpio-leds";
+        status = "okay";
+        red_direct: led_0 { gpios = <&gpio0 26 GPIO_ACTIVE_LOW>; };
+        green_direct: led_1 { gpios = <&gpio0 30 GPIO_ACTIVE_LOW>; };
     };
 };
