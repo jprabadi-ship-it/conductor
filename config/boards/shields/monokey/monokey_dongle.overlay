@@ -1,16 +1,16 @@
 #include "monokey.dtsi"
 
-/* 1. 基本設定：使用しないシリアルを無効化 */
+/* 1. 基本設定：使用しないシリアルを無効化 [cite: 59] */
 &xiao_serial { status = "disabled"; };
 
-/* 2. キーマトリックス */
+/* 2. キーマトリックス [cite: 60] */
 &kscan0 {
     row-gpios = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
     col-gpios = <&xiao_d 1 GPIO_ACTIVE_HIGH>;
 };
 
 / {
-    /* 3. 無線信号の受信設定 */
+    /* 3. 無線信号の受信設定  */
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
@@ -21,23 +21,21 @@
         };
     };
 
-    /* 4. マウス操作のリスナー設定（🌟ルートノード内に配置） */
+    /* 4. マウス操作のリスナー設定（🌟ルートノード内に配置  ） */
     trackball_peripheral_listener: trackball_peripheral_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
     };
 
-    /* 5. LED設定（ピン直叩き仕様） */
+    /* 5. LED設定（ピン直叩き仕様 [cite: 65, 66, 67, 68] ） */
     leds {
         compatible = "gpio-leds";
         status = "okay";
 
-        /* 赤色: P0.26 */
         red_direct: led_0 {
             gpios = <&gpio0 26 GPIO_ACTIVE_LOW>;
         };
 
-        /* 緑色: P0.30 */
         green_direct: led_1 {
             gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;
         };
