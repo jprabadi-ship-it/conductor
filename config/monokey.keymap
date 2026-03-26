@@ -1,7 +1,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <behaviors/zip_auto_layer.dtsi>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/mouse.h>
 
@@ -218,5 +217,5 @@
 /* トラックボール連動設定 [cite: 56, 57] */
 &trackball_peripheral_listener {
     status = "okay"; [cite: 56]
-    input-processors = <&zip_auto_layer MOUSE 1000>; [cite: 57]
+    input-processors = <&zip_temp_layer MOUSE 1000>;
 };
