@@ -11,137 +11,136 @@
 
 &mt {
     flavor = "balanced";
-    quick-tap-ms = <0>;
+    quick-tap-ms = <0>; [cite: 16]
 };
 
 / {
     chosen {
-        zmk,rgbled-widget = &led_strip;
+        zmk,rgbled-widget = &led_strip; [cite: 16]
     };
 
     combos {
-        compatible = "zmk,combos";
-        tab { bindings = <&kp TAB>; key-positions = <11 12>; };
-        shift_tab { bindings = <&kp LS(TAB)>; key-positions = <12 13>; };
-        muhennkann { bindings = <&to_layer_0 INT_MUHENKAN>; key-positions = <11 10>; };
-        double_quotation { bindings = <&kp DOUBLE_QUOTES>; key-positions = <20 21>; };
+        compatible = "zmk,combos"; [cite: 17]
+        tab { bindings = <&kp TAB>; key-positions = <11 12>; }; [cite: 17, 18]
+        shift_tab { bindings = <&kp LS(TAB)>; key-positions = <12 13>; }; [cite: 18]
+        muhennkann { bindings = <&to_layer_0 INT_MUHENKAN>; key-positions = <11 10>; }; [cite: 19]
+        double_quotation { bindings = <&kp DOUBLE_QUOTES>; key-positions = <20 21>; }; [cite: 19, 20]
     };
 
     macros {
         to_layer_0: to_layer_0 {
             compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
+            #binding-cells = <1>; [cite: 21]
             bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-            label = "TO_LAYER_0";
+            label = "TO_LAYER_0"; [cite: 21]
         };
         macro_repeated_backspace: macro_repeated_backspace {
             compatible = "zmk,behavior-macro";
-            label = "MACRO_REPEATED_BACKSPACE";
+            label = "MACRO_REPEATED_BACKSPACE"; [cite: 22]
             #binding-cells = <0>;
-            bindings = <&macro_repeat_press &kp BACKSPACE>;
+            bindings = <&macro_repeat_press &kp BACKSPACE>; [cite: 23]
         };
     };
 
     tap_dance {
-        compatible = "zmk,tap-dance";
+        compatible = "zmk,tap-dance"; [cite: 24]
         td_backspace {
             label = "TD_BACKSPACE";
-            taps = <1>, <2>;
-            bindings = <&kp BACKSPACE, &macro_repeated_backspace>;
+            taps = <1>, <2>; [cite: 25]
+            bindings = <&kp BACKSPACE, &macro_repeated_backspace>; [cite: 26]
         };
     };
 
     behaviors {
         right_click: right_click_behavior {
             compatible = "zmk,behavior-mouse-key";
-            label = "RIGHT_CLICK";
+            label = "RIGHT_CLICK"; [cite: 26, 27]
             #binding-cells = <0>;
-            bindings = <&mkp MB2>;
+            bindings = <&mkp MB2>; [cite: 27]
         };
         backspace_hold_layer: backspace_hold_layer {
             compatible = "zmk,behavior-hold-tap";
-            label = "BACKSPACE_HOLD_LAYER";
+            label = "BACKSPACE_HOLD_LAYER"; [cite: 28]
             bindings = < &kp BACKSPACE >, < &mo 3 >;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <200>; [cite: 29]
         };
     };
 
     &auto_layer {
-        continue-list = <MB1 MB2 MB3 BT_CLR BT_SEL 0 BT_SEL 1 BT_SEL 2 BT_SEL 3 BT_SEL 4>;
+        continue-list = <MB1 MB2 MB3 BT_CLR BT_SEL 0 BT_SEL 1 BT_SEL 2 BT_SEL 3 BT_SEL 4>; [cite: 30]
     };
 
     keymap {
-        compatible = "zmk,keymap";
+        compatible = "zmk,keymap"; [cite: 31]
 
         default_layer {
             bindings = <
-&kp Q      &kp W           &kp E         &kp R           &kp T                                &kp Y          &kp U                &kp I     &kp O     &kp P
-&kp A      &kp S           &kp D         &kp F           &kp G                                &kp H          &kp J                &kp K     &kp L     &kp ENTER
-&kp Z      &kp X           &kp C         &kp V           &kp B                                &kp N          &kp M                &mkp MB1  &mkp MB2  &kp SLASH
-&kp LCTRL  &kp LEFT_SHIFT  &kp LEFT_ALT  &kp LEFT_COMMAND  &lt 1 SPACE  &to_layer_0 2 TAB    &kp BACKSPACE  &lt 3 RIGHT_COMMAND            &kp ESC   &kp ESC
+&kp Q      &kp W           &kp E         &kp R           &kp T                                &kp Y          &kp U                &kp I     &kp O     &kp P [cite: 32, 33]
+&kp A      &kp S           &kp D         &kp F           &kp G                                &kp H          &kp J                &kp K     &kp L     &kp ENTER [cite: 33, 34]
+&kp Z      &kp X           &kp C         &kp V           &kp B                                &kp N          &kp M                &mkp MB1  &mkp MB2  &kp SLASH [cite: 34, 35]
+&kp LCTRL  &kp LEFT_SHIFT  &kp LEFT_ALT  &kp LEFT_COMMAND  &lt 1 SPACE  &to_layer_0 2 TAB    &kp BACKSPACE  &lt 3 RIGHT_COMMAND            &kp ESC   &kp ESC [cite: 35]
             >;
-            sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
+            sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>; [cite: 36]
         };
 
         FUNCTION {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                    &kp F1  &kp F2  &kp F3  &kp F4  &kp F5
-&trans  &trans  &trans  &trans  &trans            &trans  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
-&trans  &trans  &trans  &trans  &trans            &trans  &kp F11 &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                  &kp ESC &kp F12
+&trans  &trans  &trans  &trans  &trans                    &kp F1  &kp F2  &kp F3  &kp F4  &kp F5 [cite: 37]
+&trans  &trans  &trans  &trans  &trans            &trans  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10 [cite: 37, 38]
+&trans  &trans  &trans  &trans  &trans            &trans  &kp F11 &trans  &trans  &trans  &trans [cite: 38]
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                  &kp ESC &kp F12 [cite: 38]
             >;
         };
 
         NUM {
             bindings = <
-&kp MINUS                    &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS                                                   &kp CARET          &kp AMPERSAND      &kp TILDE       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
-&kp SLASH                    &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK  &kp LC(LA(KP_NUMBER_0))    &kp UNDERSCORE  &kp EXCLAMATION    &kp AT_SIGN        &kp HASH        &kp DOLLAR            &kp PERCENT
-&mt LEFT_SHIFT KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD    &kp EQUAL                  &trans          &kp LEFT_BRACKET   &kp RIGHT_BRACKET  &kp LEFT_BRACE  &kp RIGHT_BRACE       &kp BACKSLASH
-&trans                       &trans           &trans           &trans           &trans        &trans                     &trans          &trans                                                &kp PIPE
+&kp MINUS                    &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS                                                   &kp CARET          &kp AMPERSAND      &kp TILDE       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS [cite: 39, 40]
+&kp SLASH                    &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK  &kp LC(LA(KP_NUMBER_0))    &kp UNDERSCORE  &kp EXCLAMATION    &kp AT_SIGN        &kp HASH        &kp DOLLAR            &kp PERCENT [cite: 40, 41]
+&mt LEFT_SHIFT KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD    &kp EQUAL                  &trans          &kp LEFT_BRACKET   &kp RIGHT_BRACKET  &kp LEFT_BRACE  &kp RIGHT_BRACE       &kp BACKSLASH [cite: 41]
+&trans                       &trans           &trans           &trans           &trans        &trans                     &trans          &trans                                                &kp PIPE [cite: 42, 43]
             >;
         };
 
         ARROW {
             bindings = <
-&kp ESCAPE      &kp LC(LS(TAB))         &kp UP_ARROW    &kp LC(TAB)              &trans                     &trans  &trans  &trans  &trans  &trans
-&kp HOME        &kp LEFT_ARROW          &kp DOWN_ARROW  &kp RIGHT_ARROW          &kp END  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans          &kp LG(LS(RIGHT_ARROW))  &trans   &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans          &trans                  &trans          &trans                   &trans   &trans    &trans  &trans                          &trans
+&kp ESCAPE      &kp LC(LS(TAB))         &kp UP_ARROW    &kp LC(TAB)              &trans                     &trans  &trans  &trans  &trans  &trans [cite: 44]
+&kp HOME        &kp LEFT_ARROW          &kp DOWN_ARROW  &kp RIGHT_ARROW          &kp END  &trans    &trans  &trans  &trans  &trans  &trans  &trans [cite: 44, 45]
+&kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans          &kp LG(LS(RIGHT_ARROW))  &trans   &trans    &trans  &trans  &trans  &trans  &trans  &trans [cite: 45]
+&trans          &trans                  &trans          &trans                   &trans   &trans    &trans  &trans                          &trans [cite: 46]
             >;
-            sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
+            sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>; [cite: 47]
         };
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans     &trans     &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &mkp LCLK  &mkp LCLK  &mkp RCLK  &trans
-/* 🌟 右手人差し指から順に： (J:左)  (K:左)     (L:右)  */
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans     &trans     &trans     &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                                &trans
+&trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans     &trans     &trans 
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &mkp LCLK  &mkp LCLK  &mkp RCLK  &trans 
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans     &trans     &trans     &trans [cite: 49]
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                                &trans [cite: 49]
             >;
         };
 
         SCROLL {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                          &trans
+&trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans [cite: 50]
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans [cite: 50]
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans [cite: 50, 51]
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                          &trans [cite: 51]
             >;
         };
 
         layer_6 {
             bindings = <
-&trans  &trans        &trans        &trans        &trans                         &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&trans  &trans        &trans        &trans        &trans  &trans    &trans       &trans        &trans        &trans        &trans        &trans
-&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans    &bootloader  &trans        &trans        &trans        &trans        &bt BT_CLR
-&trans  &trans        &trans        &trans        &trans  &trans    &trans       &trans                                                  &bt BT_CLR_ALL
+&trans  &trans        &trans        &trans        &trans                         &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4 [cite: 52]
+&trans  &trans        &trans        &trans        &trans  &trans    &trans       &trans        &trans        &trans        &trans        &trans [cite: 52]
+&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans    &bootloader  &trans        &trans        &trans        &trans        &bt BT_CLR [cite: 53]
+&trans  &trans        &trans        &trans        &trans  &trans    &trans       &trans                                                  &bt BT_CLR_ALL [cite: 54]
             >;
         };
     };
 };
 
-/* LEDウィジェットの色設定 */
+/* 🌟 LEDウィジェットの色設定 [cite: 55] */
 &led_strip {
     layers = <
         0   0   0    /* 0: Off */
@@ -150,11 +149,11 @@
         255 255 255  /* 3: ARROW */
         0   0   255  /* 4: MOUSE (Blue) */
         0   255 0    /* 5: SCROLL (Green) */
-        255 0   0    /* 6: layer_6 (Red) */
+        255 0   0    /* 6: layer_6 (Red) [cite: 56, 57] */
     >;
 };
 
-/* トラックボール連動設定 */
+/* 🌟 工程3: トラックボール連動設定（独立させる）  */
 &trackball_peripheral_listener {
     status = "okay";
     input-processors = <&zip_auto_layer MOUSE 1000>;
