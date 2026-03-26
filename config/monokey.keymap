@@ -86,74 +86,120 @@
     };
 
     keymap {
-        compatible = "zmk,keymap"; [cite: 30]
+        compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-&kp Q      &kp W           &kp E         &kp R           &kp T                                &kp Y          &kp U                &kp I     &kp O     &kp P [cite: 31, 32]
-&kp A      &kp S           &kp D         &kp F           &kp G                                &kp H          &kp J                &kp K     &kp L     &kp ENTER [cite: 32, 33]
-&kp Z      &kp X           &kp C         &kp V           &kp B                                &kp N          &kp M                &mkp MB1  &mkp MB2  &kp SLASH [cite: 33, 34]
-&kp LCTRL  &kp LEFT_SHIFT  &kp LEFT_ALT  &kp LEFT_COMMAND  &lt 1 SPACE  &to_layer_0 2 TAB    &kp BACKSPACE  &lt 3 RIGHT_COMMAND            &kp ESC   &kp ESC [cite: 34]
+&kp Q         &kp W      &kp E     &kp R      &kp T                                        &kp Y        &kp U  &kp I      &kp O                    &kp BACKSPACE
+&kp A         &kp S      &kp D     &kp F      &kp G                                        &kp H        &kp J  &kp K      &kp L                    &lt 5 P
+&mt LSHFT Z   &kp X      &kp C     &kp V      &kp B                                        &kp N        &kp M  &kp COMMA  &kp PERIOD               &kp MINUS
+&mt LGUI ESC  &kp LCTRL  &kp LALT  &lt 1 TAB  &lt 2 SPACE  &mt LGUI LANG2  &mt RGUI LANG1  &lt 3 ENTER                    &mt RSHFT RS(SEMICOLON)  &kp SLASH
             >;
-            sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>; [cite: 35]
+
+            sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
         };
 
         FUNCTION {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                    &kp F1  &kp F2  &kp F3  &kp F4  &kp F5 [cite: 36]
-&trans  &trans  &trans  &trans  &trans            &trans  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10 [cite: 36]
-&trans  &trans  &trans  &trans  &trans            &trans  &kp F11 &trans  &trans  &trans  &trans [cite: 37]
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                  &kp ESC &kp F12 [cite: 37]
+&kp EXCLAMATION       &kp AT_SIGN               &kp HASH        &kp DOLLAR  &kp PERCENT                  &kp CARET  &kp AMPERSAND  &kp ASTERISK      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
+&kp LS(LG(NUMBER_4))  &kp LS(LG(LC(NUMBER_4)))  &kp LS(LG(N5))  &trans      &trans                       &kp MINUS  &kp EQUAL      &kp LEFT_BRACKET  &kp RIGHT_BRACKET     &kp BACKSLASH
+&kp LEFT_SHIFT        &trans                    &trans          &trans      &trans                       &trans     &trans         &kp SEMICOLON     &kp SINGLE_QUOTE      &kp GRAVE
+&kp ESCAPE            &trans                    &trans          &trans      &mo 6        &trans  &trans  &trans                                      &kp C_VOLUME_DOWN     &kp C_VOLUME_UP
             >;
         };
 
-        NUM {
+        NUMERIC {
             bindings = <
-&kp MINUS                    &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS                                                   &kp CARET          &kp AMPERSAND      &kp TILDE       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS [cite: 38, 39]
-&kp SLASH                    &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK  &kp LC(LA(KP_NUMBER_0))    &kp UNDERSCORE  &kp EXCLAMATION    &kp AT_SIGN        &kp HASH        &kp DOLLAR            &kp PERCENT [cite: 39, 40]
-&mt LEFT_SHIFT KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD    &kp EQUAL                  &trans          &kp LEFT_BRACKET   &kp RIGHT_BRACKET  &kp LEFT_BRACE  &kp RIGHT_BRACE       &kp BACKSLASH [cite: 40]
-&trans                       &trans           &trans           &trans           &trans        &trans                     &trans          &trans                                                &kp PIPE [cite: 41, 42]
+&trans          &trans  &trans  &trans  &trans                      &kp KP_N7        &kp KP_N8  &kp KP_N9  &kp KP_NUMLOCK     &trans
+&trans          &trans  &trans  &trans  &trans                      &kp KP_N4        &kp KP_N5  &kp KP_N6  &kp KP_PLUS        &kp KP_MINUS
+&kp LEFT_SHIFT  &trans  &trans  &trans  &trans                      &kp KP_NUMBER_1  &kp KP_N2  &kp KP_N3  &kp KP_MULTIPLY    &kp KP_DIVIDE
+&trans          &trans  &trans  &trans  &trans  &trans  &kp KP_DOT  &kp KP_N0                              &kp C_VOLUME_DOWN  &kp C_VOLUME_UP
             >;
         };
 
         ARROW {
             bindings = <
-&kp ESCAPE      &kp LC(LS(TAB))         &kp UP_ARROW    &kp LC(TAB)              &trans                     &trans  &trans  &trans  &trans  &trans [cite: 43]
-&kp HOME        &kp LEFT_ARROW          &kp DOWN_ARROW  &kp RIGHT_ARROW          &kp END  &trans    &trans  &trans  &trans  &trans  &trans  &trans [cite: 43, 44]
-&kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans          &kp LG(LS(RIGHT_ARROW))  &trans   &trans    &trans  &trans  &trans  &trans  &trans  &trans [cite: 44]
-&trans          &trans                  &trans          &trans                   &trans   &trans    &trans  &trans                          &trans [cite: 45]
+&trans  &trans  &kp LS(LC(NUMBER_1))  &kp LS(LC(NUMBER_2))  &kp LS(LC(NUMBER_3))                  &kp LC(UP_ARROW)  &kp LC(LEFT_ARROW)  &kp UP_ARROW    &kp LC(RIGHT)    &kp LC(DOWN_ARROW)
+&trans  &trans  &kp LS(LC(NUMBER_4))  &kp LS(LC(N5))        &kp LS(LC(NUMBER_6))                  &kp LC(A)         &kp LEFT_ARROW      &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LC(E)
+&trans  &trans  &kp LS(LC(N7))        &kp LS(LC(N8))        &kp LS(LC(N9))                        &kp C_PREVIOUS    &kp LG(LEFT)        &mkp MB3        &kp RG(RIGHT)    &kp C_NEXT
+&trans  &trans  &trans                &trans                &trans                &trans  &trans  &trans                                                &kp C_BRI_DEC    &kp C_BRI_INC
             >;
-            sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>; [cite: 46]
+
+            sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
         };
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                    &trans  &trans  &mkp LCLK  &mkp LCLK  &mkp LCLK [cite: 46]
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &mkp LCLK  &mkp LCLK  &mkp RCLK  &trans [cite: 47]
-/* 🌟 右手J, Kを左クリック、Lを右クリックに設定 [cite: 47] */
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans     &trans     &trans     &trans [cite: 48]
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                                &trans [cite: 48]
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &mkp MB1  &mkp MB2  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                    &trans    &trans
             >;
         };
 
         SCROLL {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans [cite: 48, 49]
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans [cite: 49]
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans [cite: 49]
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                          &trans [cite: 50]
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans
             >;
         };
 
-        layer_6 {
+        Bluetooth {
             bindings = <
-&trans  &trans        &trans        &trans        &trans                         &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4 [cite: 50]
-&trans  &trans        &trans        &trans        &trans  &trans    &trans       &trans        &trans        &trans        &trans        &trans [cite: 51]
-&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans    &bootloader  &trans        &trans        &trans        &trans        &bt BT_CLR [cite: 52]
-&trans  &trans        &trans        &trans        &trans  &trans    &trans       &trans                                                  &bt BT_CLR_ALL [cite: 53]
+&trans  &trans  &trans  &trans  &trans                   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &trans
+&trans  &trans  &trans  &trans  &trans                   &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &trans
+&trans  &trans  &trans  &trans  &trans                   &trans         &trans         &trans         &trans         &trans
+&trans  &trans  &trans  &trans  &trans  &kp F19  &trans  &bootloader                                  &bt BT_CLR     &bt BT_CLR_ALL
             >;
         };
-    }; /* keymap close [cite: 53] */
+
+        layer_7 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans
+            >;
+        };
+
+        layer_8 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans
+            >;
+        };
+
+        layer_9 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans
+            >;
+        };
+
+        layer_10 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans
+            >;
+        };
+
+        layer_11 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans
+            >;
+        };
+    };
 }; /* root close [cite: 53] */
 
 /* LEDウィジェットの色設定 [cite: 54] */
