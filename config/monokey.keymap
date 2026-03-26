@@ -3,7 +3,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-/* マウス移動とスクロールの加速設定 */
 &mmv {
     time-to-max-speed-ms = <500>;
     acceleration-exponent = <1>;
@@ -22,11 +21,6 @@
 &lt { quick-tap-ms = <200>; };
 
 / {
-    /* 🌟 エラー回避のため chosen ブロックをシンプルに */
-    chosen {
-        /* zmk,rgbled-widget の行を削除しました */
-    };
-
     combos {
         compatible = "zmk,combos";
         scroll { bindings = <&mo 5>; key-positions = <17 18>; };
@@ -112,9 +106,7 @@
     };
 };
 
-/* 🌟 LED設定（&led_strip 関連）を一旦コメントアウトしました */
-
-&trackball_peripheral_listener {
-    status = "okay";
+/* 🌟 今回のエラー回避の鍵：定義済みの入力リスナーへ直接上書き */
+&{/split_inputs/trackball@0} {
     input-processors = <&zip_temp_layer MOUSE 1000>;
 };
