@@ -4,5 +4,4 @@ jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
     with:
-      # 👇 これが、画像 の門番を黙らせる魔法の言葉です
-      args: --no-variant-check
+      skip_zmk_compat_check: true
