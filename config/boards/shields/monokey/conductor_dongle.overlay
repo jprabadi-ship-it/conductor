@@ -27,11 +27,17 @@
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
 
-        /* ✅ リスト形式で、AMLとASLを「対等なプロセッサ」として並べます */
-        input-processors = 
-            <&zip_temp_layer 4 1000>,             /* 1. AML（実績あり） */
-            <&zip_xy_to_scroll_scaler 5 1 1>;     /* 2. ASL（レイヤー5時のみ発動） */
+        /* ✅ 1. 成功実績のある AML だけをここに書きます */
+        input-processors = <&zip_temp_layer 4 1000>;
 
+    };
+
+    layer-5-asl {
+        compatible = "zmk,input-behavior-listener";
+        device = <&trackball_split>;
+        layers = <5>;
+        /* ※引数を 3 つ（レイヤー、感度X、感度Y）から 2 つ（感度のみ）に減らした原始的な命令を使います */
+        input-processors = <&zip_xy_to_scroll_scaler 1 1>;
     };
 
 };
