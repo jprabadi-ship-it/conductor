@@ -1,10 +1,10 @@
 include:
-  - board: xiao_ble//zmk
+  - board: xiao_ble//zmk  # ここはそのまま
     shield: settings_reset
-  - board: xiao_ble//zmk
+  - board: xiao_ble@v2    # 👈 ここを「@v2」付きに書き換えます
     shield: conductor_dongle
     snippet: zmk-usb-logging
-  - board: xiao_ble//zmk
+  - board: xiao_ble@v2    # 👈 ここも「@v2」付きにします
     shield: monokey_R rgbled_adapter
-  - board: xiao_ble//zmk
+  - board: xiao_ble@v2    # 👈 ここも「@v2」付きにします
     shield: monokey_L rgbled_adapter
