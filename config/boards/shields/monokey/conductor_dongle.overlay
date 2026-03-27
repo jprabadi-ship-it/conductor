@@ -29,11 +29,6 @@
 
         input-processors = <&zip_temp_layer 4 1000>;
 
-        layer-5 {
-            layers = <5>;
-            input-processors = <&zip_xy_scaler 1 1>, <&zip_xy_to_scroll_scaler 1 1>;
-        };
-
     };
 
 };
