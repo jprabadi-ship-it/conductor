@@ -34,7 +34,7 @@
         /* もしこれがダメなら、根本的な定義ファイル（dtsi）側に不足があります */
         layer-5 {
             layers = <5>;
-            input-processors = <&zip_xy_to_scroll>;
+            input-processors = <&zip_xy_to_scroll_scaler 1 1>;
         };
 
     };
