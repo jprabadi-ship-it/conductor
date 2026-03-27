@@ -27,4 +27,5 @@ include:
     shield: settings_reset
   - board: xiao_ble//zmk
     shield: monokey_dongle
+    snippet: studio-rpc-usb-uart
 #    shield: monokey_dongle rgbled_adapter_studio_rpc_usb_uart
