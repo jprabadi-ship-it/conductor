@@ -8,29 +8,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 1. ドングル (conductor_dongle) のビルド
+      # 1. ドングル (conductor_dongle)
       - name: Build Dongle
-        uses: zmkfirmware/zmk-build-action@v2
+        uses: zmkfirmware/zmk-build-arm-action@v2
         with:
           board: xiao_ble
           shield: conductor_dongle
-          # ここで「門番」を介さず直接ビルドします
 
-      # 2. 右手側 (monokey_R) のビルド
+      # 2. 右手側 (monokey_R)
       - name: Build Right
-        uses: zmkfirmware/zmk-build-action@v2
+        uses: zmkfirmware/zmk-build-arm-action@v2
         with:
           board: xiao_ble
           shield: monokey_R rgbled_adapter
 
-      # 3. 左手側 (monokey_L) のビルド
+      # 3. 左手側 (monokey_L)
       - name: Build Left
-        uses: zmkfirmware/zmk-build-action@v2
+        uses: zmkfirmware/zmk-build-arm-action@v2
         with:
           board: xiao_ble
           shield: monokey_L rgbled_adapter
 
-      # 最後に成果物をアップロードしてダウンロード可能にします
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with:
