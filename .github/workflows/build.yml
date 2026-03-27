@@ -10,21 +10,21 @@ jobs:
 
       # 1. ドングル (conductor_dongle)
       - name: Build Dongle
-        uses: zmkfirmware/zmk-build-arm-action@v2
+        uses: zmkfirmware/zmk-build-action@v2
         with:
           board: xiao_ble
           shield: conductor_dongle
 
       # 2. 右手側 (monokey_R)
       - name: Build Right
-        uses: zmkfirmware/zmk-build-arm-action@v2
+        uses: zmkfirmware/zmk-build-action@v2
         with:
           board: xiao_ble
           shield: monokey_R rgbled_adapter
 
       # 3. 左手側 (monokey_L)
       - name: Build Left
-        uses: zmkfirmware/zmk-build-arm-action@v2
+        uses: zmkfirmware/zmk-build-action@v2
         with:
           board: xiao_ble
           shield: monokey_L rgbled_adapter
