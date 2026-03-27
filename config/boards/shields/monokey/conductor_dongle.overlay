@@ -1,4 +1,4 @@
-/* #include "monokey.dtsi" */
+#include "monokey.dtsi"
 #include <input/processors.dtsi>
 
 &xiao_serial { status = "disabled"; };
