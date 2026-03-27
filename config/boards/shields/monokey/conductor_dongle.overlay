@@ -1,7 +1,8 @@
+/ { zmk,compat-check = "skip"; };
+
 #include "monokey.dtsi"
 #include <input/processors.dtsi>
 
-/* 👇 ここで「自分専用のスクロール命令」を強制的に定義します */
 / {
     asl_scroll: asl_scroll {
         compatible = "zmk,input-processor-temp-layer";
@@ -18,7 +19,6 @@
 
 / {
 
-/* 1. ドングル側の「受信機」：右手から送られてくる0番のトラックボールデータを受け取る箱 */
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
@@ -30,7 +30,6 @@
         };
     };
 
-    /* 2. ドングル側の「翻訳係」：受信機に入ったデータを、PCのマウスの動きとして出力する */
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
