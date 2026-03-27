@@ -14,7 +14,7 @@ jobs:
         with:
           board: xiao_ble
           shield: conductor_dongle
-          # 👇 ここが重要：環境変数として「チェック済み」という嘘の情報を流し込みます
+          # 強制的に許可フラグを注入します
           cmake-args: "-DCONFIG_ZMK_BOARD_COMPAT=y"
 
       # 2. 右手側 (monokey_R)
