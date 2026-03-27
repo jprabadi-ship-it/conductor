@@ -2,39 +2,4 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    name: Build ZMK Firmwares
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      # 1. ドングル (conductor_dongle)
-      - name: Build Dongle
-        uses: zmkfirmware/zmk-build-arm-action@v2
-        with:
-          board: xiao_ble
-          shield: conductor_dongle
-          # 強制的に許可フラグを注入します
-          cmake-args: "-DCONFIG_ZMK_BOARD_COMPAT=y"
-
-      # 2. 右手側 (monokey_R)
-      - name: Build Right
-        uses: zmkfirmware/zmk-build-arm-action@v2
-        with:
-          board: xiao_ble
-          shield: monokey_R rgbled_adapter
-          cmake-args: "-DCONFIG_ZMK_BOARD_COMPAT=y"
-
-      # 3. 左手側 (monokey_L)
-      - name: Build Left
-        uses: zmkfirmware/zmk-build-arm-action@v2
-        with:
-          board: xiao_ble
-          shield: monokey_L rgbled_adapter
-          cmake-args: "-DCONFIG_ZMK_BOARD_COMPAT=y"
-
-      - name: Archive artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: firmware
-          path: "*.uf2"
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
