@@ -1,5 +1,5 @@
 #include "monokey.dtsi"
-#include "include/input_processors.dtsi"
+#include <input/processors.dtsi>
 
 &xiao_serial { status = "disabled"; };
 
@@ -27,15 +27,10 @@
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
 
-        /* ✅ 1. まずは動くことが証明されている AML を戻します */
-        input-processors = <&zip_temp_layer 4 1000>;
-
-        /* ✅ 2. 以前の scaler ではなく、別の関数（xy_to_scroll）で試します */
-        /* もしこれがダメなら、根本的な定義ファイル（dtsi）側に不足があります */
-        layer-5 {
-            layers = <5>;
-            input-processors = <&zip_xy_to_scroll_scaler 1 1>;
-        };
+        /* ✅ リスト形式で、AMLとASLを「対等なプロセッサ」として並べます */
+        input-processors = 
+            <&zip_temp_layer 4 1000>,             /* 1. AML（実績あり） */
+            <&zip_xy_to_scroll_scaler 5 1 1>;     /* 2. ASL（レイヤー5時のみ発動） */
 
     };
 
