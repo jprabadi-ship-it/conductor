@@ -1,10 +1,9 @@
 include:
   - board: xiao_ble//zmk
     shield: settings_reset
-  - board: xiao_ble
+  - board: xiao_ble//zmk
     shield: conductor_dongle
   - board: xiao_ble//zmk
     shield: monokey_R rgbled_adapter
   - board: xiao_ble//zmk
     shield: monokey_L rgbled_adapter
-
