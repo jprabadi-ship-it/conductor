@@ -5,7 +5,7 @@
 / {
     asl_scroll: asl_scroll {
         compatible = "zmk,input-processor-temp-layer";
-        #input-processor-cells = <5>;
+        #input-processor-cells = <3>;
     };
 };
 
