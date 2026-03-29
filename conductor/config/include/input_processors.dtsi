@@ -1,0 +1,37 @@
+/*
+ * Copyright (c) 2024 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <zephyr/dt-bindings/dt-util.h>
+
+#define ZIP_SCALER_VAL(frac, div) (((frac) << 8) | (div))
+
+#define ZIP_XY_SCALER(frac, div) \
+    compatible = "zmk,input-processor-scaler"; \
+    type = <INPUT_EV_REL>; \
+    codes = <INPUT_REL_X INPUT_REL_Y>; \
+    track-remainders; \
+    multiplier = <frac>; \
+    divisor = <div共通>;
+
+/ {
+    zip_xy_scaler: zip_xy_scaler {
+        compatible = "zmk,input-processor-scaler";
+        #input-processor-cells = <2>;
+        type = <INPUT_EV_REL>;
+        codes = <INPUT_REL_X INPUT_REL_Y>;
+        track-remainders;
+    };
+
+    zip_xy_to_scroll_scaler: zip_xy_to_scroll_scaler {
+        compatible = "zmk,input-processor-temp-layer";
+        #input-processor-cells = <3>;
+    };
+
+    zip_temp_layer: zip_temp_layer {
+        compatible = "zmk,input-processor-temp-layer";
+        #input-processor-cells = <2>;
+    };
+};

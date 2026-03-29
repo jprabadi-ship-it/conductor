@@ -1,0 +1,8 @@
+file_format: "1"
+id: monokey
+name: conductor
+type: shield
+url: https://github.com/pite1222/zmk-config-monokey
+requires: [seeeduino_xiao_ble]
+features:
+  - keys

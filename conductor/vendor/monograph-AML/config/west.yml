@@ -1,0 +1,21 @@
+manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    - name: pite1222
+      url-base: https://github.com/pite1222
+    - name: caksoylar  # <-- new entry
+      url-base: https://github.com/caksoylar
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      revision: v0.3
+      import: app/west.yml
+    - name: zmk-pmw3610-driver
+      remote: pite1222
+      revision: main
+    - name: zmk-rgbled-widget  # <-- new entry
+      remote: caksoylar
+      revision: main
+  self:
+    path: config

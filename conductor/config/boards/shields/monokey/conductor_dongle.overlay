@@ -1,0 +1,92 @@
+/ { zmk,compat-check = "skip"; };
+
+#include "monokey.dtsi"
+#include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
+#include <dt-bindings/pinctrl/nrf-pinctrl.h>
+
+&xiao_serial { status = "disabled"; };
+
+&pinctrl {
+    pwm0_default: pwm0_default {
+        group1 {
+            psels = <NRF_PSEL(PWM_OUT0, 0, 26)>, <NRF_PSEL(PWM_OUT1, 0, 30)>;
+            nordic,drive-mode = <NRF_DRIVE_S0S1>;
+        };
+    };
+    pwm0_sleep: pwm0_sleep {
+        group1 {
+            psels = <NRF_PSEL(PWM_OUT0, 0, 26)>, <NRF_PSEL(PWM_OUT1, 0, 30)>;
+            low-power-enable;
+            nordic,drive-mode = <NRF_DRIVE_S0S1>;
+        };
+    };
+};
+
+&pwm0 {
+    status = "okay";
+    pinctrl-0 = <&pwm0_default>;
+    pinctrl-1 = <&pwm0_sleep>;
+    pinctrl-names = "default", "sleep";
+};
+
+/* AMLの除外キーと時間設定（10秒） */
+&zip_temp_layer {
+    excluded-positions = <
+        17 // K (左クリック)
+        18 // L (右クリック)
+    >;
+    require-prior-idle-ms = <300>;
+};
+
+/ {
+    /* kscan0 の直接定義 (Dongle用) */
+    kscan0: kscan0 {
+        compatible = "zmk,kscan-gpio-matrix";
+        wakeup-source;
+        diode-direction = "col2row";
+        row-gpios = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+        col-gpios = <&xiao_d 1 GPIO_ACTIVE_HIGH>;
+    };
+
+    /* 🌟 エラー対策: dtsiのエイリアスが参照するダミーノードを追加 */
+    chg_stat: chg_stat {
+        status = "disabled";
+    };
+
+    backlight: pwmleds {
+        compatible = "pwm-leds";
+        status = "okay";
+        red_led_node { pwms = <&pwm0 0 10000000 PWM_POLARITY_INVERTED>; };
+        green_led_node { pwms = <&pwm0 1 10000000 PWM_POLARITY_INVERTED>; };
+    };
+
+    chosen {
+        zmk,kscan = &kscan0;
+        zmk,backlight = &backlight;
+    };
+
+    split_inputs {
+        compatible = "zmk,split-inputs";
+        #address-cells = <1>;
+        #size-cells = <0>;
+        trackball_split: trackball@0 {
+            compatible = "zmk,input-split";
+            reg = <0>;
+            status = "okay";
+        };
+    };
+
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball_split>;
+        input-processors = 
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+            <&zip_xy_scaler 1 1>,   // (分子)　(分母) 親機での水増し処理は残す
+            <&zip_temp_layer 4 5000>;
+        scroll_layer {
+            layers = <5>;
+            input-processors = <&zip_xy_to_scroll_mapper &zip_scroll_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT) &zip_scroll_scaler 1 16>;
+        };
+    };
+};

@@ -1,0 +1,17 @@
+name: Draw Keymap
+on:
+  workflow_dispatch:  # 手動実行ボタンを表示
+  push:
+    paths:
+      - "config/*.keymap"  # keymapファイルが変更されたら実行
+      - "config/*.conf"    # 設定ファイルが変更されたら実行
+
+jobs:
+  draw:
+    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
+    permissions:
+      contents: write  # 画像を保存する権限を与える
+    with:
+      keymap_patterns: "config/*.keymap"  # 対象ファイルの場所
+      output_folder: "keymap-drawer"      # 画像の保存先フォルダ
+      config_path: "keymap_drawer.config.yaml" # 設定ファイル（後で作る場合用）
