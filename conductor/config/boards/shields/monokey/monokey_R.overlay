@@ -69,7 +69,7 @@
         motion-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* D0 */
         zephyr,axis-x = <INPUT_REL_X>;
         zephyr,axis-y = <INPUT_REL_Y>;
-        res-cpi = <800>; 
+        res-cpi = <800>;
     };
 };
 
@@ -124,4 +124,10 @@
     };
 
     chg_stat: chg_stat { status = "disabled"; };
+
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball>; // センサー本体を指定
+        input-processors = <&zip_xy_scaler 1 2>; // ここで1/2に間引く
+    };
 };

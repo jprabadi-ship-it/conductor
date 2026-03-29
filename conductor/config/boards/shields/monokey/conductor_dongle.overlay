@@ -82,7 +82,7 @@
         device = <&trackball_split>;
         input-processors = 
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
-            <&zip_xy_scaler 1 1>,   // (分子)　(分母) 親機での水増し処理は残す
+            <&zip_xy_scaler 2 1>,   // (分子)　(分母) 親機での水増し処理は残す
             <&zip_temp_layer 4 5000>;
         scroll_layer {
             layers = <5>;
