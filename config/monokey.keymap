@@ -46,10 +46,10 @@
 
         default_layer {
             bindings = <
-&kp Q             &kp W      &kp E         &kp R                   &kp T                           &kp Y        &kp U                    &kp I      &kp O         &kp P
-&kp A             &kp S      &kp D         &kp F                   &kp G                           &kp H        &kp J                    &kp K      &kp L         &kp MINUS
-&mt LEFT_SHIFT Z  &kp X      &kp C         &kp V                   &kp B                           &kp N        &kp M                    &kp COMMA  &kp PERIOD    &mt RIGHT_SHIFT SLASH
-&kp TAB           &kp LCTRL  &kp LEFT_ALT  &mt LEFT_COMMAND LANG2  &lt 1 SPACE  &lt 2 BACKSPACE    &lt 3 ENTER  &mt RIGHT_COMMAND LANG1             &kp C_VOL_DN  &kp C_VOLUME_UP
+&kp Q             &kp W      &kp E         &kp R                   &kp T                           &kp Y        &kp U                    &kp I      &kp O         &kp BACKSPACE
+&kp A             &kp S      &kp D         &kp F                   &kp G                           &kp H        &kp J                    &kp K      &kp L         &lt 5 P
+&mt LEFT_SHIFT Z  &kp X      &kp C         &kp V                   &kp B                           &kp N        &kp M                    &kp COMMA  &kp PERIOD    &kp MINUS
+&kp TAB           &kp LCTRL  &kp LEFT_ALT  &lt 1 TAB  &lt 2 SPACE  &mt LEFT_COMMAND LANG2    &mt RIGHT_COMMAND LANG1  &lt 3 ENTER        &mt RIGHT_SHIFT SEMICOLON  &kp SLASH
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
@@ -77,7 +77,7 @@
             bindings = <
 &trans  &trans  &kp LS(LC(NUMBER_1))  &kp LS(LC(NUMBER_2))  &kp LS(LC(NUMBER_3))            &kp LC(UP_ARROW)  &kp LC(LEFT_ARROW)  &kp UP_ARROW    &kp LC(RIGHT)    &kp LC(DOWN_ARROW)
 &trans  &trans  &kp LS(LC(NUMBER_4))  &kp LS(LC(N5))        &kp LS(LC(NUMBER_6))            &kp LC(A)         &kp LEFT_ARROW      &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LC(E)
-&trans  &trans  &kp LS(LC(N7))        &kp LS(LC(N8))        &kp LS(LC(N9))                  &kp C_PREVIOUS    &kp LG(LEFT)        &trans          &kp RG(RIGHT)    &kp C_NEXT
+&trans  &trans  &kp LS(LC(N7))        &kp LS(LC(N8))        &kp LS(LC(N9))                  &kp C_PREVIOUS    &kp LG(LEFT)        &mkp MB3        &kp RG(RIGHT)    &kp C_NEXT
 &trans  &trans  &trans                &trans                &trans                &trans    &trans            &trans                              &kp C_BRI_DEC    &kp C_BRI_INC
             >;
 
