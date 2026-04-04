@@ -101,16 +101,24 @@
         compatible = "zmk,split-inputs";
         #address-cells = <1>;
         #size-cells = <0>;
-        trackball_split: trackball@0 {
+
+        /* 接続順によってIDが変わるため、0番と1番両方の仮想デバイスを準備する */
+        trackball_split_0: trackball@0 {
             compatible = "zmk,input-split";
             reg = <0>;
             status = "okay";
         };
+        trackball_split_1: trackball@1 {
+            compatible = "zmk,input-split";
+            reg = <1>;
+            status = "okay";
+        };
     };
 
-    trackball_listener {
+    /* ID: 0 (左手かもしれないし右手かもしれない) 用のリスナー */
+    trackball_listener_0 {
         compatible = "zmk,input-listener";
-        device = <&trackball_split>;
+        device = <&trackball_split_0>;
         input-processors = 
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
             <&zip_xy_scaler 2 1>,
@@ -123,6 +131,24 @@
                                <&zip_scroll_scaler 1 16>;
         };
     };
+
+    /* ID: 1 (左手かもしれないし右手かもしれない) 用のリスナー */
+    trackball_listener_1 {
+        compatible = "zmk,input-listener";
+        device = <&trackball_split_1>;
+        input-processors = 
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+            <&zip_xy_scaler 2 1>,
+            <&zip_temp_layer 4 5000>;
+        
+        scroll_layer {
+            layers = <5>;
+            input-processors = <&zip_xy_to_scroll_mapper>,
+                               <&zip_scroll_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
+                               <&zip_scroll_scaler 1 16>;
+        };
+    };
+
 };
 
 &xiao_serial { status = "disabled"; };
