@@ -36,24 +36,6 @@
 
 
 / {
-    trackball_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball>;
-
-        /* ベース: オートマウスレイヤー (AML)
-         * トラックボール操作時にレイヤー4 (MOUSE) を自動有効化
-         * 5000ms (5秒) のタイムアウトで自動解除 */
-        input-processors = <&zip_temp_layer 4 5000>;
-
-        /* スクロールレイヤー: レイヤー5 (SCROLL) がアクティブ時
-         * XY移動をスクロールホイールに変換
-         * スクロール速度をスケーリング (1/8) で調整 */
-        scroll_layer {
-            layers = <5>;
-            input-processors = <&zip_xy_to_scroll_mapper &zip_scroll_transform INPUT_TRANSFORM_Y_INVERT &zip_scroll_scaler 1 16>;
-        };
-    };
-
     chg_stat: chg_stat {
         compatible = "custom,chg-stat";
         /* Xiao BLE の充電検知ピン P0.17 (Low = 充電中, High = 完了/未接続) */
