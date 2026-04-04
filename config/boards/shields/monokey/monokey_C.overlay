@@ -154,3 +154,9 @@
     excluded-positions = <17 18>;
     require-prior-idle-ms = <300>;
 };
+
+/* ベースのkscan0の必須プロパティ要件を満たしつつ無効化する */
+&kscan0 {
+    status = "disabled";
+    col-gpios = <&xiao_d 1 GPIO_ACTIVE_HIGH>; /* ダミーのピン */
+};
