@@ -12,7 +12,7 @@
 / {
     chosen {
         zmk,physical-layout = &monokey_physical_layout;
-        zmk,kscan = &kscan0;
+        zmk,kscan = &kscan_central;
         zmk,backlight = &backlight;
     };
 
@@ -20,7 +20,7 @@
         compatible = "zmk,physical-layout";
         display-name = "Default";
         transform = <&default_transform>;
-        kscan = <&kscan0>;
+        kscan = <&kscan_central>;
 
         /* ZMK Studio 用のキー座標定義 */
         keys
@@ -80,7 +80,7 @@
     };
 
     /* ドングル用のダミーkscan。実際のスキャンは左右からBLEで届く */
-    kscan0: kscan0 {
+    kscan_central: kscan_central {
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
         diode-direction = "col2row";
