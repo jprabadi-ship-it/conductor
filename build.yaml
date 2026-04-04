@@ -24,4 +24,7 @@ include:
   - board: xiao_ble//zmk
     shield: monokey_L rgbled_adapter
   - board: xiao_ble//zmk
+    shield: monokey_C rgbled_adapter
+    snippets: [studio-rpc-usb-uart]
+  - board: xiao_ble//zmk
     shield: settings_reset
