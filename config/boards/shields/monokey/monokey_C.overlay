@@ -114,14 +114,14 @@ split_inputs {
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
         input-processors = 
-            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
             <&zip_xy_scaler 2 1>,
             <&zip_temp_layer 4 5000>;
         
         scroll_layer {
             layers = <5>;
             input-processors = <&zip_xy_to_scroll_mapper>,
-                               <&zip_scroll_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
+                               <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
                                <&zip_scroll_scaler 1 16>;
         };
     };
