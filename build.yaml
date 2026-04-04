@@ -1,7 +1,6 @@
 include:
   - board: xiao_ble//zmk
     shield: monokey_R rgbled_adapter
-    snippets: [studio-rpc-usb-uart]
     artifact-name: monokey_R_0.4.0
   - board: xiao_ble//zmk
     shield: monokey_L rgbled_adapter
