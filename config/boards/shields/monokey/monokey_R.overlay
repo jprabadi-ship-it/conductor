@@ -42,6 +42,17 @@
         gpios = <&gpio0 17 GPIO_ACTIVE_LOW>;
         status = "okay";
     };
+    split_inputs {
+        compatible = "zmk,split-inputs";
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        trackball_split: trackball@0 {
+            compatible = "zmk,input-split";
+            reg = <0>;
+            device = <&trackball>;
+        };
+    };
 };
 
 &pinctrl {
